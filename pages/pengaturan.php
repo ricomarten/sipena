@@ -1,6 +1,7 @@
 <style>
 .datepicker{z-index:1151 !important;}
 </style>
+<link rel="stylesheet" type="text/css" href="assets/bootstrap-datepicker/css/datepicker.css" />
 <!-- BEGIN Breadcrumb -->
 <div id="breadcrumbs">
 	<ul class="breadcrumb">

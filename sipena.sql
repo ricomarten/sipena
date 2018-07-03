@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.7.9
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2018 at 06:45 AM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 5.6.32
+-- Generation Time: Jul 03, 2018 at 01:47 PM
+-- Server version: 10.1.31-MariaDB
+-- PHP Version: 5.6.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,13 +25,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `kalender`
+--
+
+CREATE TABLE `kalender` (
+  `tanggal` date NOT NULL,
+  `jam_kerja` int(11) NOT NULL,
+  `terpakai` int(11) NOT NULL,
+  `sisa` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `kegiatan`
 --
 
 CREATE TABLE `kegiatan` (
   `id` int(11) NOT NULL,
   `nama` text NOT NULL,
-  `jadwal` text NOT NULL,
+  `jadwal_awal` date NOT NULL,
+  `jadwal_selesai` date NOT NULL,
   `target_dokumen` int(11) NOT NULL,
   `waktu_olah` int(11) NOT NULL,
   `jam_kerja` int(11) NOT NULL,
@@ -137,31 +151,24 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`username`, `password`, `status`) VALUES
 ('admin', '123456', '0'),
-('intan', '123456', '3'),
 ('joshua', '123456', '1'),
-('ricomarten', '123456', '2');
+('rico', '123456', '2');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `kegiatan`
+-- Indexes for table `kalender`
 --
-ALTER TABLE `kegiatan`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `kalender`
+  ADD PRIMARY KEY (`tanggal`);
 
 --
 -- Indexes for table `pengaturan2`
 --
 ALTER TABLE `pengaturan2`
   ADD PRIMARY KEY (`tanggal`);
-
---
--- Indexes for table `risiko`
---
-ALTER TABLE `risiko`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `status_user`
@@ -174,22 +181,6 @@ ALTER TABLE `status_user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`username`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `kegiatan`
---
-ALTER TABLE `kegiatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `risiko`
---
-ALTER TABLE `risiko`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
