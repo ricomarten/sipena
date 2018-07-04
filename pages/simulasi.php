@@ -17,7 +17,7 @@
 			<a href="index.php">Home</a>
 			<span class="divider"><i class="icon-angle-right"></i></span>
 		</li>
-		<i class="icon-pencil"></i><li class="active">Perencanaan Pengolahan Data</li>
+		<i class="icon-list-alt"></i><li class="active">Simulasi Pengolahan Data</li>
 	</ul>
 </div>
 <!-- END Breadcrumb -->
@@ -25,77 +25,14 @@
 <div class="row-fluid">
 	<div class="span12">
 		<div class="box">
-		<?php
-		if(empty($var['aksi'])){
-		?>
 			<div class="box-title">
-				<h3><i class="icon-pencil"></i> Daftar Perencanaan Pengolahan Data</h3>
-				<div class="box-tool">
-					<a data-action="collapse" href="#"><i class="icon-chevron-up"></i></a>
-				</div>
-			</div>
-			<div class="box-content">
-				<div class="pull-right">
-					<a href="?<?php echo paramEncrypt('page=perencanaan&aksi=entri'); ?>" class="btn btn-info"><i class="icon-plus"></i> Entri Perencanaan</a>
-					<br/>
-					<br/>
-				</div>
-				 <div class="clearfix"></div>
-				<table class="table table-advance" id="table1">
-					<thead>
-						<tr>
-							<th>No</th>
-							<th>Nama Kegiatan Pengolahan Data</th>
-							<th>Jadwal Pengolahan Data</th>
-							<th>Aksi</th>
-						</tr>
-					</thead>
-					<tbody>
-					<?php
-					$sql=mysql_query("select * from kegiatan");
-					$i=1;
-					while($data=mysql_fetch_array($sql)){
-						$awal = strtotime($data['jadwal_awal']);
-						$akhir = strtotime($data['jadwal_selesai']);
-						$datediff = $akhir - $awal;
-						//echo round($datediff / (60 * 60 * 24));
-						
-						echo "<tr>";
-						echo "<td>".$i."</td>";
-						echo "<td>".$data['nama']."</td>";
-						echo "<td>".tanggal($data['jadwal_awal'])." s.d. ".tanggal($data['jadwal_selesai'])." (".(round($datediff / (60 * 60 * 24))+1)." hari)</td>";
-						echo "<td>
-								<div class='btn-group'>
-									<a class='btn btn-small btn-warning show-tooltip' title='Edit' href='?".paramEncrypt('page=perencanaan&aksi=edit&id='.$data['id'].'')."'><i class='icon-edit'></i></a>&nbsp;
-									<a class='btn btn-small btn-danger show-tooltip' title='Delete' href='#'><i class='icon-trash'></i></a>
-								</div>
-							</td>";
-						echo "</tr>";
-						$i++;
-					}
-					?>
-					</tbody>
-				</table>
-			</div>
-			
-		<?php } ?>
-		<?php
-		if(!empty($var['aksi']) && $var['aksi']=='entri'){
-		?>
-			<div class="box-title">
-				<h3><i class="icon-pencil"></i> Entri Perencanaan Pengolahan Data</h3>
+				<h3><i class="icon-list-alt"></i> Simulasi Pengolahan Data</h3>
 				<div class="box-tool">
 					<a data-action="collapse" href="#"><i class="icon-chevron-up"></i></a>
 				</div>
 			</div>
 			<div class="box-content">
 			<form id="entri" action="#" class="form-horizontal" onsubmit="return SimpanEntri()">
-				<div class="control-group">
-					<label class="control-label">Nama Kegiatan Pengolahan Data</label>
-					<div class="controls"> 
-						<input type="text" class="span6" id="nama" name="nama"/>
-					</div>
-				</div>
 				<div class="control-group">
 					<label class="control-label">Jadwal Pengolahan</label>
 					<div class="controls">
@@ -139,15 +76,6 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label">Rencana Hari Kerja</label>
-					<div class="controls">
-						<button class="add_form_field">Tambah Hari <i class="icon-plus"></i></button>
-						<div class="container1">					
-							<div class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span><input class="date-picker" size="16" type="text" name="hari[]"></div>
-						</div>
-					</div>
-				</div>
-				<div class="control-group">
 					<label class="control-label">Jumlah PC yang Digunakan</label>
 					<div class="controls"> 
 						<div class="input-append">
@@ -157,105 +85,11 @@
 					</div>
 				</div>
 				<div class="form-actions">
-					<button type="button" class="btn btn-primary" onclick="SimpanEntri();"><i class="icon-save"></i> Simpan</button>			
-					<a href="?<?php echo paramEncrypt('page=perencanaan'); ?>" type="button" class="btn">Kembali</a>
+					<button type="button" class="btn btn-primary" onclick="SimpanEntri();"><i class="icon-search"></i> Simulasi</button>			
+					<a href="?<?php echo paramEncrypt('page=main'); ?>" type="button" class="btn">Kembali</a>
 				</div>
 			</form>
 			</div>	
-		<?php } ?>
-		<?php
-		if(!empty($var['aksi']) && $var['aksi']=='edit'){
-		?>
-			<div class="box-title">
-				<h3><i class="icon-pencil"></i> Edit Perencanaan Pengolahan Data</h3>
-				<div class="box-tool">
-					<a data-action="collapse" href="#"><i class="icon-chevron-up"></i></a>
-				</div>
-			</div>
-			<div class="box-content">
-			<form id="entri" action="#" class="form-horizontal" onsubmit="return SimpanEntri()">
-			<?php
-				$sql=mysql_query("select * from kegiatan where id=".$var['id']."");
-				$data=mysql_fetch_array($sql);
-			?>
-				<div class="control-group">
-					<label class="control-label">Nama Kegiatan Pengolahan Data</label>
-					<div class="controls"> 
-						<input type="text" class="span6" id="nama" name="nama" value="<?php echo $data['nama'];?>"/>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">Jadwal Pengolahan</label>
-					<div class="controls">
-						<div class="input-prepend">
-							<span class="add-on"><i class="icon-calendar"></i></span>
-							<input class="date-picker" size="16" type="text" id="jadwal_awal" name="jadwal_awal" value="<?php echo tanggal($data['jadwal_awal']);?>" />
-						</div>				
-						sd
-						<div class="input-prepend">
-							<span class="add-on"><i class="icon-calendar"></i></span>
-							<input class="date-picker" size="16" type="text" id="jadwal_akhir" name="jadwal_akhir" value="<?php echo tanggal($data['jadwal_selesai']);?>" />
-						</div>
-						
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">Target Dokumen</label>
-					<div class="controls"> 
-						<div class="input-append">
-							<input type="text" class="input-xlarge" id="target" name="target" value="<?php echo $data['target_dokumen'];?>"/>
-							<span class="add-on">dokumen</i></span>
-						</div>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">Waktu Olah per Dokumen</label>
-					<div class="controls"> 
-						<div class="input-append">
-							<input type="text" class='input-xlarge' id="olah" name="olah" value="<?php echo $data['waktu_olah'];?>"/>
-							<span class="add-on">menit</i></span>
-						</div>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">Rencana Jam Kerja Per Hari</label>
-					<div class="controls"> 
-						<div class="input-append">
-							<input type="text" class='input-xlarge' id="jam_kerja" name="jam_kerja" value="<?php echo $data['jam_kerja'];?>"/>
-							<span class="add-on">jam</i></span>
-						</div>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">Rencana Hari Kerja</label>
-					<div class="controls">
-						<button class="add_form_field">Tambah Hari <i class="icon-plus"></i></button>
-						<div class="container1">
-							<?php
-							$sql_kal=mysql_query("select * from kalender_kegiatan where id_kegiatan=".$var['id']."");
-							while($data_kal=mysql_fetch_array($sql_kal)){
-								echo '<div class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span><input class="date-picker" size="16" type="text" name="hari[]" value="'.tanggal($data_kal['tanggal']).'"></div>';
-							}
-							?>
-						</div>
-					</div>
-				</div>
-				<div class="control-group">
-					<label class="control-label">Jumlah PC yang Digunakan</label>
-					<div class="controls"> 
-						<div class="input-append">
-							<input type="text" class='input-xlarge' id="pc" name="pc" value="<?php echo $data['pc'];?>"/>
-							<span class="add-on">buah</i></span>
-						</div>
-					</div>
-				</div>
-				<div class="form-actions">
-					<button type="button" class="btn btn-primary" onclick="SimpanEntri();"><i class="icon-save"></i> Simpan</button>			
-					<a href="?<?php echo paramEncrypt('page=perencanaan'); ?>" type="button" class="btn">Kembali</a>
-				</div>
-			</form>
-			</div>	
-		<?php } ?>
 		</div>
 	</div>
 </div>
@@ -343,7 +177,7 @@ function SimpanEntri(){
 	for(var i=0; i < document.getElementsByName("hari[]").length;i++){
 		hari.push(document.getElementsByName("hari[]")[i].value);
 	} 
-	if(nama=="" || jadwal_awal=="" || jadwal_akhir=="" || target=="" || olah=="" || jam_kerja=="" || pc=="" || hari.length==0 ){
+	if(jadwal_awal=="" || jadwal_akhir=="" || target=="" || olah=="" || jam_kerja=="" || pc==""  ){
 	    alert("Semua isian harus terisi")
 	}else{ 
 	    $("#loadingImage").show();
@@ -354,7 +188,7 @@ function SimpanEntri(){
           //event.preventDefault();
          
 		$.ajax({
-			url: 'pages/perencanaan_add.php',
+			url: 'pages/simulasi_add.php',
 			type: 'POST',
 			data: formData,
 			async: true,
