@@ -25,7 +25,7 @@ if($A==$H){
 }elseif($A<$H){
 	$prediksi= "Terlambat ".($H-$A)." hari";
 }
-	
+echo "Dengan data yang ada dibutuhkan $H hari untuk menyelesaikan pengolahan data\n\n";	
 $rek=round(($D/$F)/$A);
 $rek2=round(($D/($H*$G))/60);
 $rekomendasi="Menambah $rek PC Pengolahan atau \nPenambahan jam kerja menjadi ".($rek2+$E)." jam perhari";
