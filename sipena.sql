@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 03, 2018 at 01:47 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 5.6.34
+-- Generation Time: Jul 04, 2018 at 02:48 AM
+-- Server version: 10.1.28-MariaDB
+-- PHP Version: 5.6.32
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,6 +35,17 @@ CREATE TABLE `kalender` (
   `sisa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `kalender`
+--
+
+INSERT INTO `kalender` (`tanggal`, `jam_kerja`, `terpakai`, `sisa`) VALUES
+('2018-07-03', 8, 3, 5),
+('2018-07-04', 8, 3, 5),
+('2018-07-05', 8, 3, 5),
+('2018-07-06', 8, 3, 5),
+('2018-07-07', 8, 3, 5);
+
 -- --------------------------------------------------------
 
 --
@@ -52,6 +63,13 @@ CREATE TABLE `kegiatan` (
   `hari_kerja` int(11) NOT NULL,
   `pc` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kegiatan`
+--
+
+INSERT INTO `kegiatan` (`id`, `nama`, `jadwal_awal`, `jadwal_selesai`, `target_dokumen`, `waktu_olah`, `jam_kerja`, `hari_kerja`, `pc`) VALUES
+(1, 'Pengolahan PODES 2018', '2018-07-01', '2018-07-10', 300, 15, 3, 5, 2);
 
 -- --------------------------------------------------------
 
@@ -151,6 +169,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`username`, `password`, `status`) VALUES
 ('admin', '123456', '0'),
+('intan', '123456', '3'),
 ('joshua', '123456', '1'),
 ('rico', '123456', '2');
 
@@ -163,6 +182,12 @@ INSERT INTO `user` (`username`, `password`, `status`) VALUES
 --
 ALTER TABLE `kalender`
   ADD PRIMARY KEY (`tanggal`);
+
+--
+-- Indexes for table `kegiatan`
+--
+ALTER TABLE `kegiatan`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `pengaturan2`
@@ -181,6 +206,16 @@ ALTER TABLE `status_user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`username`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `kegiatan`
+--
+ALTER TABLE `kegiatan`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

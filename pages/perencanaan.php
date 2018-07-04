@@ -247,8 +247,7 @@ $("#target").keydown(function (e) {
         }
     });
 function SimpanEntri(){
-    $(".control-group").removeClass("has-error");
-   	// get values
+   // get values
     var nama       	= $("#nama").val();
     var jadwal_awal = $("#jadwal_awal").val();
     var jadwal_akhir= $("#jadwal_akhir").val();

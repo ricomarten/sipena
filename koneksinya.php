@@ -7,4 +7,9 @@ if (!$conn) {
 }
 mysql_select_db('sipena', $conn);
 //mysql_select_db('spi_monada', $conn);
+
+function tanggal($tanggal){
+	$tgl=explode("-",$tanggal);
+	return $tgl[2]."-".$tgl[1]."-".$tgl[0];
+}
 ?>
