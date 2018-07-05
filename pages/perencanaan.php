@@ -241,7 +241,7 @@
 							<?php
 							$sql_kal=mysql_query("select * from kalender_kegiatan where id_kegiatan=".$var['id']."");
 							while($data_kal=mysql_fetch_array($sql_kal)){
-								echo '<div class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span><input class="date-picker" size="16" type="text" name="hari[]" value="'.tanggal($data_kal['tanggal']).'"></div>';
+								echo '<div class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span><input class="date-picker" size="16" type="text" name="hari[]" value="'.tanggal($data_kal['tanggal']).'"></div><br>';
 							}
 							?>
 						</div>
@@ -257,7 +257,7 @@
 					</div>
 				</div>
 				<div class="form-actions">
-					<button type="button" class="btn btn-primary" onclick="SimpanEntri();"><i class="icon-save"></i> Simpan</button>			
+					<button type="button" class="btn btn-primary" onclick="SimpanUpdate();"><i class="icon-save"></i> Simpan</button>			
 					<a href="?<?php echo paramEncrypt('page=perencanaan'); ?>" type="button" class="btn">Kembali</a>
 				</div>
 			</form>
@@ -363,6 +363,51 @@ function SimpanEntri(){
          
 		$.ajax({
 			url: 'pages/perencanaan_add.php',
+			type: 'POST',
+			data: formData,
+			async: true,
+			cache: false,
+			contentType: false,
+			processData: false,
+			success: function (returndata) {
+			  var pesan=returndata.split("#");
+			  if(pesan[0]=="Berhasil menambahkan perencanaan"){
+				  alert(pesan[0]);
+				  location.href='index.php?'+pesan[1];
+			  }else{
+				  alert(returndata);
+			  }
+			  $("#loadingImage").hide();
+			}
+		});
+	}
+}
+function SimpanUpdate(){
+   // get values
+    var nama       	= $("#nama").val();
+    var jadwal_awal = $("#jadwal_awal").val();
+    var jadwal_akhir= $("#jadwal_akhir").val();
+    var target      = $("#target").val();
+	var olah       	= $("#olah").val();
+	var jam_kerja   = $("#jam_kerja").val();
+	var pc      	= $("#pc").val();
+	var tanggal     = document.getElementsByName("hari[]")[0].value;
+	var hari = [];
+	for(var i=0; i < document.getElementsByName("hari[]").length;i++){
+		hari.push(document.getElementsByName("hari[]")[i].value);
+	} 
+	if(nama=="" || jadwal_awal=="" || jadwal_akhir=="" || target=="" || olah=="" || jam_kerja=="" || pc=="" || hari.length==0 || tanggal==""){
+	    alert("Semua isian harus terisi")
+	}else{ 
+	    $("#loadingImage").show();
+            var myForm = document.getElementById('entri');
+            formData = new FormData(myForm);
+          
+          //disable the default form submission
+          //event.preventDefault();
+         
+		$.ajax({
+			url: 'pages/perencanaan_update.php',
 			type: 'POST',
 			data: formData,
 			async: true,
