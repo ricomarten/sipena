@@ -73,7 +73,7 @@
 						echo "</ul></td>";
 						echo "<td>
 								<div class='btn-group'>
-									<a class='btn btn-warning show-tooltip' title='Edit' href='?".paramEncrypt('page=perencanaan&aksi=edit&id='.$data['id'].'')."'><i class='icon-edit'></i></a>&nbsp;
+									<a class='btn btn-warning show-tooltip' title='Lihat Detail' href='?".paramEncrypt('page=perencanaan&aksi=edit&id='.$data['id'].'')."'><i class='icon-search'></i></a>&nbsp;
 									<button onclick='Delete(\"".$data['id']."\",\"".$data['nama']."\")' class='btn btn-danger' title='Hapus'><i class='icon-trash'></i></button>
 								</div>
 							</td>";
