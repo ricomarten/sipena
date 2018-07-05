@@ -43,6 +43,7 @@
 						<tr>
 							<th>No</th>
 							<th>Nama Kegiatan Pengolahan Data</th>
+							<th>Waktu Pengolahan</th>
 							<th>Keterangan</th>
 							<th>Rekomendasi</th>
 						</tr>
@@ -60,6 +61,7 @@
 						echo "<tr>";
 						echo "<td>".$i."</td>";
 						echo "<td>".$data['nama']."</td>";
+						echo "<td>".tanggal($data['jadwal_awal'])." s.d. ".tanggal($data['jadwal_selesai'])." (".(round($datediff / (60 * 60 * 24))+1)." hari)</td>";
 						echo "<td>".$data['prediksi']."</td>";
 						echo "<td>".$data['rekomendasi']."</td>";			
 						echo "</tr>";

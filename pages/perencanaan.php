@@ -47,6 +47,7 @@
 							<th>No</th>
 							<th>Nama Kegiatan Pengolahan Data</th>
 							<th>Jadwal Pengolahan Data</th>
+							<th>Rencana Pengerjaan</th>
 							<th>Aksi</th>
 						</tr>
 					</thead>
@@ -64,10 +65,16 @@
 						echo "<td>".$i."</td>";
 						echo "<td>".$data['nama']."</td>";
 						echo "<td>".tanggal($data['jadwal_awal'])." s.d. ".tanggal($data['jadwal_selesai'])." (".(round($datediff / (60 * 60 * 24))+1)." hari)</td>";
+						echo "<td>".$data['hari_kerja']." hari <ul>";
+						$kal_keg=mysql_query("select * from kalender_kegiatan where id_kegiatan='".$data['id']."'");
+						while($data_kal=mysql_fetch_array($kal_keg)){
+							echo "<li>".tanggal($data_kal['tanggal'])."</li>";
+						}
+						echo "</ul></td>";
 						echo "<td>
 								<div class='btn-group'>
-									<a class='btn btn-small btn-warning show-tooltip' title='Edit' href='?".paramEncrypt('page=perencanaan&aksi=edit&id='.$data['id'].'')."'><i class='icon-edit'></i></a>&nbsp;
-									<a class='btn btn-small btn-danger show-tooltip' title='Delete' href='#'><i class='icon-trash'></i></a>
+									<a class='btn btn-warning show-tooltip' title='Edit' href='?".paramEncrypt('page=perencanaan&aksi=edit&id='.$data['id'].'')."'><i class='icon-edit'></i></a>&nbsp;
+									<button onclick='Delete(\"".$data['id']."\",\"".$data['nama']."\")' class='btn btn-danger' title='Hapus'><i class='icon-trash'></i></button>
 								</div>
 							</td>";
 						echo "</tr>";
@@ -373,6 +380,25 @@ function SimpanEntri(){
 			}
 		});
 	}
+}
+// Delete Record
+function Delete(id,nama) {
+    var conf = confirm("Apakah yakin akan menghapus perencanaan "+nama+"?");
+    if (conf == true) {
+        $.post("pages/perencanaan_delete.php", {
+                id: id
+            },
+            function (data, status) {
+				var pesan=data.split("#");
+				if(pesan[0]=="Berhasil menghapus perencanaan"){
+					alert(pesan[0]);
+					location.href='index.php?'+pesan[1];
+				}else{
+					alert(data);
+				}
+            }
+        );
+    }
 }
 </script>
 <!--page specific plugin scripts-->

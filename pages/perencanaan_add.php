@@ -13,6 +13,7 @@ else{
 	$berhasil=true;
 	$sql_query=[];
 	$j=0;
+	$hari_pengolahan=0;
 	for($i=0;$i<count($_POST['hari']);$i++){
 		if($_POST['hari'][$i]!=""){
 			$tgl=explode("-",$_POST['hari'][$i]);
@@ -29,8 +30,8 @@ else{
 					mysql_query("INSERT INTO kalender(tanggal, jam_kerja, terpakai, sisa) VALUES ('".$tanggal."',".$jam_pengaturan['jam_kerja'].",".$_POST['jam_kerja'].",".$sisa.")");
 				}else{
 					$sisa=$data['jam_kerja']-$_POST['jam_kerja'];
-					//mysql_query("INSERT INTO kalender(tanggal, jam_kerja, terpakai, sisa) VALUES ('".$tanggal."',".$data['jam_kerja'].",".$_POST['jam_kerja'].",".$sisa.")");
-				}				
+					mysql_query("INSERT INTO kalender(tanggal, jam_kerja, terpakai, sisa) VALUES ('".$tanggal."',".$data['jam_kerja'].",".$_POST['jam_kerja'].",".$sisa.")");
+				}
 			}
 			else{
 				if($datakalender['sisa']<$_POST['jam_kerja']){
@@ -46,14 +47,14 @@ else{
 					$j++;
 				}
 			}
+			$hari_pengolahan++;
 		}		
 	}
 	if($berhasil){	
-		$hari_pengolahan=0;
+		
 		for($k=0;$k<$j;$k++){
 			$hasil=mysql_query($sql_query[$k]);
-			//echo $hasil;
-			$hari_pengolahan++;
+			//echo $hasil;	
 		}
 		$datediff = strtotime(tanggal($_POST['jadwal_akhir'])) - strtotime(tanggal($_POST['jadwal_awal']));
 			$A=(round($datediff / (60 * 60 * 24))+1);
