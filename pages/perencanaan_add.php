@@ -46,7 +46,7 @@ else{
 				}
 				else{
 					$terpakai=$datakalender['terpakai']+$_POST['jam_kerja'];
-					$sisa=$data['jam_kerja']-$terpakai;
+					$sisa=$datakalender['jam_kerja']-$terpakai;
 					$sql_query[$j]="update kalender set terpakai=".$terpakai.", sisa =".$sisa." where tanggal='".$tanggal."'";
 					$berhasil=true;
 					$j++;
