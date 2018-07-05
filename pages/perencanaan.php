@@ -346,11 +346,12 @@ function SimpanEntri(){
 	var olah       	= $("#olah").val();
 	var jam_kerja   = $("#jam_kerja").val();
 	var pc      	= $("#pc").val();
+	var tanggal     = document.getElementsByName("hari[]")[0].value;
 	var hari = [];
 	for(var i=0; i < document.getElementsByName("hari[]").length;i++){
 		hari.push(document.getElementsByName("hari[]")[i].value);
 	} 
-	if(nama=="" || jadwal_awal=="" || jadwal_akhir=="" || target=="" || olah=="" || jam_kerja=="" || pc=="" || hari.length==0 ){
+	if(nama=="" || jadwal_awal=="" || jadwal_akhir=="" || target=="" || olah=="" || jam_kerja=="" || pc=="" || hari.length==0 || tanggal==""){
 	    alert("Semua isian harus terisi")
 	}else{ 
 	    $("#loadingImage").show();

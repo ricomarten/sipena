@@ -2,11 +2,14 @@
 include "../koneksinya.php";
 include "../plugins/AES/function.php";
 //print_r($_POST);
-
+$berhasil=false;
 $sql=mysql_query("select * from pengaturan");
 $data=mysql_fetch_array($sql);
-
-if($_POST['pc']>$data['pc']){
+$cek_nama=mysql_query("select nama from kegiatan where nama='".$_POST['nama']."'");
+if(mysql_num_rows($cek_nama)>0){
+	echo "Nama kegiatan tidak boleh sama";
+}
+elseif($_POST['pc']>$data['pc']){
 	echo "PC Melebihi Jumlah yang Ada";
 }
 else{
@@ -27,10 +30,12 @@ else{
 				if(mysql_num_rows($sql_pengaturan)>0){
 					$jam_pengaturan=mysql_fetch_array($sql_pengaturan);
 					$sisa=$jam_pengaturan['jam_kerja']-$_POST['jam_kerja'];
-					mysql_query("INSERT INTO kalender(tanggal, jam_kerja, terpakai, sisa) VALUES ('".$tanggal."',".$jam_pengaturan['jam_kerja'].",".$_POST['jam_kerja'].",".$sisa.")");
+					$sql_query[$j]="INSERT INTO kalender(tanggal, jam_kerja, terpakai, sisa) VALUES ('".$tanggal."',".$jam_pengaturan['jam_kerja'].",".$_POST['jam_kerja'].",".$sisa.")";
+					$j++;
 				}else{
 					$sisa=$data['jam_kerja']-$_POST['jam_kerja'];
-					mysql_query("INSERT INTO kalender(tanggal, jam_kerja, terpakai, sisa) VALUES ('".$tanggal."',".$data['jam_kerja'].",".$_POST['jam_kerja'].",".$sisa.")");
+					$sql_query[$j]="INSERT INTO kalender(tanggal, jam_kerja, terpakai, sisa) VALUES ('".$tanggal."',".$data['jam_kerja'].",".$_POST['jam_kerja'].",".$sisa.")";
+					$j++;
 				}
 			}
 			else{
@@ -52,42 +57,42 @@ else{
 	}
 	if($berhasil){	
 		
-		for($k=0;$k<$j;$k++){
-			$hasil=mysql_query($sql_query[$k]);
-			//echo $hasil;	
-		}
 		$datediff = strtotime(tanggal($_POST['jadwal_akhir'])) - strtotime(tanggal($_POST['jadwal_awal']));
-			$A=(round($datediff / (60 * 60 * 24))+1);
-			$B=$_POST['target'];
-			$C=$_POST['olah'];
-			$D=$B*$C;
-			$E=$_POST['jam_kerja'];
-			$F=$E*60;
-			$G=$_POST['pc'];
-			$H=round(($D/$F)/$G);
-			
-			#Bila A = H maka selesai tepat waktu
-			#Bila A > H maka selesai lebih cepat (A-H) hari
-			#Bila A < H maka terlambat (A-H) hari
-			
-			if($A==$H){
-				$prediksi= "Selesai tepat waktu";
-			}elseif($A>$H){
-				$prediksi= "Selesai lebih cepat ".($A-$H)." hari";
-			}elseif($A<$H){
-				$prediksi= "Terlambat ".($H-$A)." hari";
-			}
-			//echo $prediksi;
-			
-			$rek=round(($D/$F)/$A);
-			$rek2=round(($D/($H*$G))/60);
-			if($A<$H){
-				$rekomendasi="Menambah $rek PC Pengolahan atau <br>Penambahan jam kerja menjadi ".($rek2+$E)." jam perhari";
-			}else $rekomendasi="";
-			
+		$A=(round($datediff / (60 * 60 * 24))+1);
+		$B=$_POST['target'];
+		$C=$_POST['olah'];
+		$D=$B*$C;
+		$E=$_POST['jam_kerja'];
+		$F=$E*60;
+		$G=$_POST['pc'];
+		$H=round(($D/$F)/$G);
+		
+		#Bila A = H maka selesai tepat waktu
+		#Bila A > H maka selesai lebih cepat (A-H) hari
+		#Bila A < H maka terlambat (A-H) hari
+		
+		if($A==$H){
+			$prediksi= "Selesai tepat waktu";
+		}elseif($A>$H){
+			$prediksi= "Selesai lebih cepat ".($A-$H)." hari";
+		}elseif($A<$H){
+			$prediksi= "Terlambat ".($H-$A)." hari";
+		}
+		//echo $prediksi;
+		if($H==0) $H=1;
+		$rek=round(($D/$F)/$A);
+		$rek2=round(($D/($H*$G))/60);
+		if($A<$H){
+			$rekomendasi="Menambah $rek PC Pengolahan atau <br>Penambahan jam kerja menjadi ".($rek2+$E)." jam perhari";
+		}else $rekomendasi="";
+		
 		$result=mysql_query("INSERT INTO kegiatan(nama,jadwal_awal,jadwal_selesai,target_dokumen,waktu_olah,jam_kerja,hari_kerja,pc,prediksi,rekomendasi) 
-			VALUES ('".$_POST['nama']."','".tanggal($_POST['jadwal_awal'])."','".tanggal($_POST['jadwal_akhir'])."','".$_POST['target']."','".$_POST['olah']."','".$_POST['jam_kerja']."','".$hari_pengolahan."','".$_POST['pc']."','".$prediksi."','".$rekomendasi."')");
+		VALUES ('".$_POST['nama']."','".tanggal($_POST['jadwal_awal'])."','".tanggal($_POST['jadwal_akhir'])."','".$_POST['target']."','".$_POST['olah']."','".$_POST['jam_kerja']."','".$hari_pengolahan."','".$_POST['pc']."','".$prediksi."','".$rekomendasi."')");
 		if($result){
+			for($k=0;$k<$j;$k++){
+				$hasil=mysql_query($sql_query[$k]);
+				//echo $hasil;	
+			}
 			$cari_id=mysql_query("select id from kegiatan where nama='".$_POST['nama']."'");
 			$hasil_id=mysql_fetch_array($cari_id);
 			for($i=0;$i<count($_POST['hari']);$i++){
@@ -98,8 +103,8 @@ else{
 			
 			echo "Berhasil menambahkan perencanaan#";
 			echo paramEncrypt('page=perencanaan');
-			
-		}
+		}	
+		
 	}else{
 		echo $result_kal;
 	}
