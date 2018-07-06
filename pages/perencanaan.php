@@ -73,7 +73,8 @@
 						echo "</ul></td>";
 						echo "<td>
 								<div class='btn-group'>
-									<a class='btn btn-warning show-tooltip' title='Lihat Detail' href='?".paramEncrypt('page=perencanaan&aksi=edit&id='.$data['id'].'')."'><i class='icon-search'></i></a>&nbsp;
+									<a class='btn show-tooltip' title='Lihat Detail' href='?".paramEncrypt('page=perencanaan&aksi=detail&id='.$data['id'].'')."'><i class='icon-search'></i></a>&nbsp;
+									<a class='btn btn-warning show-tooltip' title='Edit' href='?".paramEncrypt('page=perencanaan&aksi=edit&id='.$data['id'].'')."'><i class='icon-edit'></i></a>&nbsp;
 									<button onclick='Delete(\"".$data['id']."\",\"".$data['nama']."\")' class='btn btn-danger' title='Hapus'><i class='icon-trash'></i></button>
 								</div>
 							</td>";
@@ -184,6 +185,7 @@
 			<?php
 				$sql=mysql_query("select * from kegiatan where id=".$var['id']."");
 				$data=mysql_fetch_array($sql);
+				echo '<input type="hidden" class="span6" id="id" name="id" value="'.$data['id'].'"/>';
 			?>
 				<div class="control-group">
 					<label class="control-label">Nama Kegiatan Pengolahan Data</label>
@@ -258,6 +260,98 @@
 				</div>
 				<div class="form-actions">
 					<button type="button" class="btn btn-primary" onclick="SimpanUpdate();"><i class="icon-save"></i> Simpan</button>			
+					<a href="?<?php echo paramEncrypt('page=perencanaan'); ?>" type="button" class="btn">Kembali</a>
+				</div>
+			</form>
+			</div>	
+		<?php } ?>
+		<?php
+		if(!empty($var['aksi']) && $var['aksi']=='detail'){
+		?>
+			<div class="box-title">
+				<h3><i class="icon-pencil"></i> Detail Perencanaan Pengolahan Data</h3>
+				<div class="box-tool">
+					<a data-action="collapse" href="#"><i class="icon-chevron-up"></i></a>
+				</div>
+			</div>
+			<div class="box-content">
+			<form id="entri" action="#" class="form-horizontal" onsubmit="return SimpanEntri()">
+			<?php
+				$sql=mysql_query("select * from kegiatan where id=".$var['id']."");
+				$data=mysql_fetch_array($sql);
+			?>
+				<div class="control-group">
+					<label class="control-label">Nama Kegiatan Pengolahan Data</label>
+					<div class="controls"> 
+						<input type="text" class="span6" id="nama" name="nama" value="<?php echo $data['nama'];?>" readonly />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Jadwal Pengolahan</label>
+					<div class="controls">
+						<div class="input-prepend">
+							<span class="add-on"><i class="icon-calendar"></i></span>
+							<input class="date-picker" size="16" type="text" id="jadwal_awal" name="jadwal_awal" value="<?php echo tanggal($data['jadwal_awal']);?>" readonly />
+						</div>				
+						sd
+						<div class="input-prepend">
+							<span class="add-on"><i class="icon-calendar"></i></span>
+							<input class="date-picker" size="16" type="text" id="jadwal_akhir" name="jadwal_akhir" value="<?php echo tanggal($data['jadwal_selesai']);?>"  readonly />
+						</div>
+						
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Target Dokumen</label>
+					<div class="controls"> 
+						<div class="input-append">
+							<input type="text" class="input-xlarge" id="target" name="target" value="<?php echo $data['target_dokumen'];?>" readonly />
+							<span class="add-on">dokumen</i></span>
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Waktu Olah per Dokumen</label>
+					<div class="controls"> 
+						<div class="input-append">
+							<input type="text" class='input-xlarge' id="olah" name="olah" value="<?php echo $data['waktu_olah'];?>" readonly />
+							<span class="add-on">menit</i></span>
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Rencana Jam Kerja Per Hari</label>
+					<div class="controls"> 
+						<div class="input-append">
+							<input type="text" class='input-xlarge' id="jam_kerja" name="jam_kerja" value="<?php echo $data['jam_kerja'];?>" readonly />
+							<span class="add-on">jam</i></span>
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Rencana Hari Kerja</label>
+					<div class="controls">
+						<button class="add_form_field">Tambah Hari <i class="icon-plus"></i></button>
+						<div class="container1">
+							<?php
+							$sql_kal=mysql_query("select * from kalender_kegiatan where id_kegiatan=".$var['id']."");
+							while($data_kal=mysql_fetch_array($sql_kal)){
+								echo '<div class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span><input class="date-picker" size="16" type="text" name="hari[]" value="'.tanggal($data_kal['tanggal']).'"  readonly ></div><br>';
+							}
+							?>
+						</div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">Jumlah PC yang Digunakan</label>
+					<div class="controls"> 
+						<div class="input-append">
+							<input type="text" class='input-xlarge' id="pc" name="pc" value="<?php echo $data['pc'];?>" readonly />
+							<span class="add-on">buah</i></span>
+						</div>
+					</div>
+				</div>
+				<div class="form-actions">			
 					<a href="?<?php echo paramEncrypt('page=perencanaan'); ?>" type="button" class="btn">Kembali</a>
 				</div>
 			</form>
@@ -384,6 +478,7 @@ function SimpanEntri(){
 }
 function SimpanUpdate(){
    // get values
+    var id       	= $("#id").val();
     var nama       	= $("#nama").val();
     var jadwal_awal = $("#jadwal_awal").val();
     var jadwal_akhir= $("#jadwal_akhir").val();
