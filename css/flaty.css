@@ -2631,12 +2631,13 @@ textarea[readonly] {
     bottom: 0;
     width: 100%;
     z-index: 1;
-	background-image: url(img/kantor.jpg)
+	
 }
 
 .login-page .login-wrapper {
     position: relative;
-    z-index: 2
+    z-index: 2;
+	
 }
 
 .login-page .login-wrapper form {

@@ -243,7 +243,7 @@
 							<?php
 							$sql_kal=mysql_query("select * from kalender_kegiatan where id_kegiatan=".$var['id']."");
 							while($data_kal=mysql_fetch_array($sql_kal)){
-								echo '<div class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span><input class="date-picker" size="16" type="text" name="hari[]" value="'.tanggal($data_kal['tanggal']).'"></div><br>';
+								echo '<div><div class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span><input class="date-picker" size="16" type="text" name="hari[]" value="'.tanggal($data_kal['tanggal']).'"></div><a href="#" class="delete"><i class="icon-remove-sign">Hapus</i></a></div><br>';
 							}
 							?>
 						</div>
@@ -511,7 +511,7 @@ function SimpanUpdate(){
 			processData: false,
 			success: function (returndata) {
 			  var pesan=returndata.split("#");
-			  if(pesan[0]=="Berhasil menambahkan perencanaan"){
+			  if(pesan[0]=="Berhasil mengupdate perencanaan"){
 				  alert(pesan[0]);
 				  location.href='index.php?'+pesan[1];
 			  }else{

@@ -121,7 +121,7 @@ else{
 				}
 			}
 			
-			echo "Berhasil menambahkan perencanaan#";
+			echo "Berhasil mengupdate perencanaan#";
 			echo paramEncrypt('page=perencanaan');
 		}	
 		

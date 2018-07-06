@@ -9,6 +9,9 @@ $cek_nama=mysql_query("select nama from kegiatan where nama='".$_POST['nama']."'
 if(mysql_num_rows($cek_nama)>0){
 	echo "Nama kegiatan tidak boleh sama";
 }
+elseif(count($_POST['hari']) !== count(array_unique($_POST['hari']))) {
+	echo "Tanggal tidak boleh sama";
+}
 elseif($_POST['pc']>$data['pc']){
 	echo "PC Melebihi Jumlah yang Ada";
 }
