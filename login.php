@@ -28,6 +28,12 @@ img{
   width: 100%;
   height: auto;
 }
+.img2{
+  display: block;
+  margin: auto;
+  width: 75%;
+  height: auto;
+}
 
 #login-button{
   cursor: pointer;
@@ -54,8 +60,8 @@ img{
   right: 0;
   bottom: 0;
   margin: auto;
-  width: 260px;
-  height: 260px;
+  width: 360px;
+  height: 520px;
   border-radius: 5px;
   background: rgba(3,3,3,0.25);
   box-shadow: 1px 1px 50px #000;
@@ -90,13 +96,22 @@ h1{
   position: relative;
   margin-top: 0px;
   text-align: center;
-  font-size: 18px;
+  font-size: 26px;
+  color: #ddd;
+  text-shadow: 3px 3px 10px #000;
+}
+h2{
+  font-family: 'Open Sans Condensed', sans-serif;
+  position: relative;
+  margin-top: 0px;
+  text-align: center;
+  font-size: 16px;
   color: #ddd;
   text-shadow: 3px 3px 10px #000;
 }
 
 /* Inputs */
-a,botton,
+a,button,
 input{
   font-family: 'Open Sans Condensed', sans-serif;
   text-decoration: none;
@@ -231,11 +246,14 @@ a:hover{
 <body>
 	<form action="telalogin.php" method="POST" id="Login">
 <div id="login-button">
-  <img src="img/login-w-icon.png">
-  </img>
+<img src="img/login-w-icon.png"></img>
 </div>
 <div id="container">
-  <h1>Aplikasi Perencanaan Pengolahan Data</h1>
+<br>
+  <h1>Aplikasi Perencanaan Pengolahan Data (SIPENA)</h1>
+   <div class="img2"><img class="img2" src="img/750.png" width="50%"></div>
+   <h2>Badan Pusat Statistik Kabupaten Tapanuli Utara</h2>
+   <hr>
   <span class="close-btn">
     <img src="img/circle_close_delete_-128.png"></img>
   </span>
@@ -245,7 +263,7 @@ a:hover{
     <input type="password" name="password" id="password" placeholder="Password">
 	<center><button  type="button" class="btn btn-primary" onclick="SimpanEntri()">Masuk</button></center>
     <div id="remember-container">
-      <span id="forgotten">Forgotten password</span>
+      <span id="forgotten">Lupa password</span>
     </div>
 </form>
 </div>

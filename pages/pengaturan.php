@@ -87,9 +87,9 @@
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="span-10 control-label">Total Jam Kerja per Hari</label>
+					<!--<label class="span-10 control-label">Total Jam Kerja per Hari</label>-->
 					<div class="span-2">       
-						<input type="text" class="form-control" id="jam" name="jam" required>			  
+						<input type="hidden" class="form-control" id="jam" name="jam" value="8" required>			  
 					</div>
 				</div>
             </div>

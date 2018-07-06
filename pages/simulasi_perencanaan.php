@@ -25,14 +25,14 @@ if($A==$H){
 }elseif($A<$H){
 	$prediksi= "Terlambat ".($H-$A)." hari";
 }
-echo "Dengan data yang ada dibutuhkan $H hari untuk menyelesaikan pengolahan data\n\n";	
+echo "Dengan data yang ada maka pengolahan akan diselesaikan dalam $H hari. \n\nSelanjutnya silahkan tentukan tanggal rencana hari kerja sebanyak $H hari.";	
 $rek=round(($D/$F)/$A);
 $rek2=round(($D/($H*$G))/60);
-$rekomendasi="Menambah $rek PC Pengolahan atau \nPenambahan jam kerja menjadi ".($rek2+$E)." jam perhari";
-echo "Status : ".$prediksi."\n";
-if($A<$H){
-	echo "Rekomendasi : ".$rekomendasi."\n";
-}
+$rekomendasi="Selanjutnya silahkan tentukan tanggal rencana hari kerja sebanyak $H hari.";
+//echo "Status : ".$prediksi."\n";
+// if($A<$H){
+	// echo "Rekomendasi : ".$rekomendasi."\n";
+// }
 			
 		
 ?>

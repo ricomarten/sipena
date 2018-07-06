@@ -6,8 +6,42 @@ $berhasil=false;
 $sql=mysql_query("select * from pengaturan");
 $data=mysql_fetch_array($sql);
 $cek_nama=mysql_query("select nama from kegiatan where nama='".$_POST['nama']."'");
+
+for($i=0;$i<count($_POST['hari']);$i++){
+	$start_ts = strtotime(tanggal($_POST['jadwal_awal']));
+	$end_ts = strtotime(tanggal($_POST['jadwal_akhir']));
+	$user_ts = strtotime(tanggal($_POST['hari'][$i]));
+
+  // Check that user date is between start & end
+  if(($user_ts >= $start_ts) && ($user_ts <= $end_ts)){
+	  $cek_batas=false;
+  }
+  else{
+	  $cek_batas=true;
+	  break;
+  }
+}
+for($i=0;$i<count($_POST['hari']);$i++){
+	$query_cari_kal=mysql_query("select * from pengaturan2 where tanggal='".tanggal($_POST['hari'][$i])."'");
+	$ketemu=mysql_num_rows($query_cari_kal);
+  // Check that user date is between start & end
+  if($ketemu>0){
+	  $cek_kal=false;
+  }
+  else{
+	  $cek_kal=true;
+	  $tanggal_setting=$_POST['hari'][$i];
+	  break;
+  }
+}
 if(mysql_num_rows($cek_nama)>0){
 	echo "Nama kegiatan tidak boleh sama";
+}
+elseif($cek_batas){
+	echo "Rencana pengerjaan tidak boleh diluar rentang jadwal pengolahan";
+}
+elseif($cek_kal){
+	echo "Tanggal ".$tanggal_setting." belum dientri di pengaturan";
 }
 elseif(count($_POST['hari']) !== count(array_unique($_POST['hari']))) {
 	echo "Tanggal tidak boleh sama";
@@ -73,7 +107,7 @@ else{
 		#Bila A = H maka selesai tepat waktu
 		#Bila A > H maka selesai lebih cepat (A-H) hari
 		#Bila A < H maka terlambat (A-H) hari
-		
+		if($H==0) $H=1;
 		if($A==$H){
 			$prediksi= "Selesai tepat waktu";
 		}elseif($A>$H){
@@ -82,7 +116,6 @@ else{
 			$prediksi= "Terlambat ".($H-$A)." hari";
 		}
 		//echo $prediksi;
-		if($H==0) $H=1;
 		$rek=round(($D/$F)/$A);
 		$rek2=round(($D/($H*$G))/60);
 		if($A<$H){
