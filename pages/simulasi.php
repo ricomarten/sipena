@@ -111,7 +111,7 @@ $(document).ready(function() {
         }
 		else
 		{
-		alert('You Reached the limits')
+			swal('','You Reached the limits','warning');
 		}
     });
     
@@ -178,7 +178,7 @@ function SimpanEntri(){
 		hari.push(document.getElementsByName("hari[]")[i].value);
 	} 
 	if(jadwal_awal=="" || jadwal_akhir=="" || target=="" || olah=="" || jam_kerja=="" || pc==""  ){
-	    alert("Semua isian harus terisi")
+	    swal("","Semua isian harus terisi","warning");
 	}else{ 
 	    $("#loadingImage").show();
             var myForm = document.getElementById('entri');
@@ -201,7 +201,7 @@ function SimpanEntri(){
 				  alert(pesan[0]);
 				  location.href='index.php?'+pesan[1];
 			  }else{
-				  alert(returndata);
+				  swal("",returndata,"success");
 			  }
 			  $("#loadingImage").hide();
 			}

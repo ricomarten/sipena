@@ -233,14 +233,14 @@ function addRecord() {
     var pc = $("#pc").val();
     var jam = $("#jam").val();
 	if(pc=='' || jam==''){
-		alert("semua isian harus terisi");
+		swal("","Semua isian harus terisi","warning");
 	}else{	
 		// Add record
 		$.post("pages/pengaturan_add.php", {
 			pc: pc,
 			jam: jam
 		}, function (data, status) {
-			alert(data);
+			swal(data);
 			// close the popup
 			$("#ubah_pengaturan").modal("hide");
 			// read records again
@@ -258,7 +258,7 @@ function addRecord2() {
 	var jam = $("#jam2").val();
     var tanggal = $("#tanggal").val();
 	if(jam=='' || tanggal==''|| pc==''){
-		alert("semua isian harus terisi");
+		swal("","Semua isian harus terisi","warning");
 	}else{	
 		// Add record
 		$.post("pages/pengaturan_add2.php", {
@@ -266,7 +266,7 @@ function addRecord2() {
 			jam: jam,
 			tanggal: tanggal
 		}, function (data, status) {
-			alert(data);
+			swal(data);
 			// close the popup
 			$("#ubah_pengaturan2").modal("hide");
 			// read records again
@@ -279,17 +279,31 @@ function addRecord2() {
 }
 // Delete Record
 function Delete(tgl) {
-    var conf = confirm("Apakah yakin akan menghapus pengaturan tanggal "+tgl+"?");
-    if (conf == true) {
-        $.post("pages/pengaturan_delete.php", {
-                tgl: tgl
-            },
-            function (data, status) {
-                // reload Users by using readRecords();
-                readRecords2();
-            }
-        );
-    }
+	swal("Apakah yakin akan menghapus pengaturan tanggal \""+tgl+"\"?", {
+	  buttons: {
+		cancel: "Tidak",
+		catch: {
+		  text: "Hapus",
+		  value: "catch",
+		}
+	  },
+	})
+	.then((value) => {
+		switch (value) {
+			case "catch":
+			$.post("pages/pengaturan_delete.php", {
+				 tgl: tgl
+			},
+				function (data, status) {				
+					readRecords2();				
+				}
+			);
+			break;
+		default:
+			//swal("Batal menghapus");
+			break;
+	}
+	});
 }
 </script>			
 <!--page specific plugin scripts-->

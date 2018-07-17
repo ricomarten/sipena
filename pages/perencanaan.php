@@ -456,7 +456,7 @@ function Simulasi(){
 		hari.push(document.getElementsByName("hari[]")[i].value);
 	} 
 	if(jadwal_awal=="" || jadwal_akhir=="" || target=="" || olah=="" || jam_kerja=="" || pc==""  ){
-	    alert("Semua isian harus terisi")
+	   swal("","Semua isian harus terisi","warning")
 	}else{ 
 	    $("#loadingImage").show();
             var myForm = document.getElementById('entri');
@@ -479,7 +479,7 @@ function Simulasi(){
 				  alert(pesan[0]);
 				  location.href='index.php?'+pesan[1];
 			  }else{
-				  alert(returndata);
+				  swal("",returndata,"success");
 			  }
 			  $("#loadingImage").hide();
 			}
@@ -501,7 +501,7 @@ function SimpanEntri(){
 		hari.push(document.getElementsByName("hari[]")[i].value);
 	} 
 	if(nama=="" || jadwal_awal=="" || jadwal_akhir=="" || target=="" || olah=="" || jam_kerja=="" || pc=="" || hari.length==0 || tanggal==""){
-	    alert("Semua isian harus terisi")
+	    swal("","Semua isian harus terisi","warning")
 	}else{ 
 	    $("#loadingImage").show();
             var myForm = document.getElementById('entri');
@@ -521,10 +521,13 @@ function SimpanEntri(){
 			success: function (returndata) {
 			  var pesan=returndata.split("#");
 			  if(pesan[0]=="Berhasil menambahkan perencanaan"){
-				  alert(pesan[0]);
-				  location.href='index.php?'+pesan[1];
+				  swal("",pesan[0],"success")
+					.then((value) => {
+					  location.href='index.php?'+pesan[1];
+					});
+				  
 			  }else{
-				  alert(returndata);
+				  swal("",returndata,"error");
 			  }
 			  $("#loadingImage").hide();
 			}
@@ -547,7 +550,7 @@ function SimpanUpdate(){
 		hari.push(document.getElementsByName("hari[]")[i].value);
 	} 
 	if(nama=="" || jadwal_awal=="" || jadwal_akhir=="" || target=="" || olah=="" || jam_kerja=="" || pc=="" || hari.length==0 || tanggal==""){
-	    alert("Semua isian harus terisi")
+	   swal("","Semua isian harus terisi","warning")
 	}else{ 
 	    $("#loadingImage").show();
             var myForm = document.getElementById('entri');
@@ -567,10 +570,12 @@ function SimpanUpdate(){
 			success: function (returndata) {
 			  var pesan=returndata.split("#");
 			  if(pesan[0]=="Berhasil mengupdate perencanaan"){
-				  alert(pesan[0]);
-				  location.href='index.php?'+pesan[1];
+				 swal("",pesan[0],"success")
+					.then((value) => {
+					  location.href='index.php?'+pesan[1];
+					});
 			  }else{
-				  alert(returndata);
+				  swal("",returndata,"error");
 			  }
 			  $("#loadingImage").hide();
 			}
@@ -579,7 +584,40 @@ function SimpanUpdate(){
 }
 // Delete Record
 function Delete(id,nama) {
-    var conf = confirm("Apakah yakin akan menghapus perencanaan "+nama+"?");
+	swal("Apakah yakin akan menghapus perencanaan "+nama+"?", {
+	  buttons: {
+		cancel: "Tidak",
+		catch: {
+		  text: "Hapus",
+		  value: "catch",
+		}
+	  },
+	})
+	.then((value) => {
+		switch (value) {
+			case "catch":
+			$.post("pages/perencanaan_delete.php", {
+				id: id
+			},
+				function (data, status) {
+					var pesan=data.split("#");
+					if(pesan[0]=="Berhasil menghapus perencanaan"){
+						swal("",pesan[0]+" "+nama,"success")
+						.then((value) => {
+						  location.href='index.php?'+pesan[1];
+						});
+					}else{
+						alert(data);
+					}
+				}
+			);
+			break;
+		default:
+			//swal("Batal menghapus");
+			break;
+	}
+	});
+    /* var conf = confirm("Apakah yakin akan menghapus perencanaan "+nama+"?");
     if (conf == true) {
         $.post("pages/perencanaan_delete.php", {
                 id: id
@@ -587,14 +625,16 @@ function Delete(id,nama) {
             function (data, status) {
 				var pesan=data.split("#");
 				if(pesan[0]=="Berhasil menghapus perencanaan"){
-					alert(pesan[0]);
-					location.href='index.php?'+pesan[1];
+					swal("",pesan[0]+" "+nama,"success")
+					.then((value) => {
+					  location.href='index.php?'+pesan[1];
+					});
 				}else{
 					alert(data);
 				}
             }
         );
-    }
+    } */
 }
 </script>
 <!--page specific plugin scripts-->

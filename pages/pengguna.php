@@ -188,10 +188,10 @@ function addRecord() {
 		}
 	}
 	if(username=='' || password==''  || level==''){
-		alert("semua isian harus terisi");
+		 swal("","Semua isian harus terisi","warning");
 	}else{
 		if(password.length<6){
-			alert("Password minimal 6 karakter");
+			swal("","Password minimal 6 karakter","warning");
 		}else{
 			// Add record
 			$.post("pages/pengguna_add.php", {
@@ -199,7 +199,7 @@ function addRecord() {
 				password: password,
 				level: level
 			}, function (data, status) {
-				alert(data);
+				swal(data);
 				// close the popup
 				$("#tambah_dev").modal("hide");
 				// read records again
@@ -214,17 +214,32 @@ function addRecord() {
 }
 // Delete Record
 function Delete(username) {
-    var conf = confirm("Apakah yakin akan menghapus user "+username+"?");
-    if (conf == true) {
-        $.post("pages/pengguna_delete.php", {
-                username: username
-            },
-            function (data, status) {
-                // reload Users by using readRecords();
-                readRecords();
-            }
-        );
-    }
+	swal("Apakah yakin akan menghapus user \""+username+"\"?", {
+	  buttons: {
+		cancel: "Tidak",
+		catch: {
+		  text: "Hapus",
+		  value: "catch",
+		}
+	  },
+	})
+	.then((value) => {
+		switch (value) {
+			case "catch":
+			$.post("pages/pengguna_delete.php", {
+				username: username
+			},
+				function (data, status) {
+					readRecords();
+				}
+			);
+			break;
+		default:
+			//swal("Batal menghapus");
+			break;
+	}
+	});
+
 }
 function GetDetails(username) {
     // Add User ID to the hidden field for furture usage
@@ -257,7 +272,7 @@ function UpdateDetails() {
 		}
 	}
     if(username=='' || password=='' || level==''){
-		alert("semua isian harus terisi");
+		 swal("","Semua isian harus terisi","warning");
 	}else{
         // Update the details by requesting to the server using ajax
         $.post("pages/pengguna_updateDetails.php", {

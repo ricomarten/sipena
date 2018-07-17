@@ -36,6 +36,7 @@
         <script>window.jQuery || document.write('<script src="assets/jquery/jquery-1.10.1.min.js"><\/script>')</script>
         <script src="assets/bootstrap/bootstrap.min.js"></script>
         <script src="assets/nicescroll/jquery.nicescroll.min.js"></script>
+		<script src="js/sweetalert.min.js"></script>
 
 
     </head>

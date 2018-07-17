@@ -166,7 +166,7 @@ function addRecord() {
     var mitigasi 		= $("#mitigasi").val();
 	var status_risiko	= $("#status").val();
 	if(risiko=='' || mitigasi==''  || status_risiko==''){
-		alert("semua isian harus terisi");
+		 swal("","Semua isian harus terisi","warning");
 	}else{		
 		// Add record
 		$.post("pages/histori_add.php", {
@@ -174,7 +174,7 @@ function addRecord() {
 			mitigasi: mitigasi,
 			status_risiko: status_risiko
 		}, function (data, status) {
-			alert(data);
+			swal(data);
 			// close the popup
 			$("#tambah_dev").modal("hide");
 			// read records again
@@ -188,17 +188,32 @@ function addRecord() {
 }
 // Delete Record
 function Delete(id,risiko) {
-    var conf = confirm("Apakah yakin akan menghapus resiko \""+risiko+"\"?");
-    if (conf == true) {
-        $.post("pages/histori_delete.php", {
-                id: id
-            },
-            function (data, status) {
-                // reload Users by using readRecords();
-                readRecords();
-            }
-        );
-    }
+	swal("Apakah yakin akan menghapus perencanaan \""+risiko+"\"?", {
+	  buttons: {
+		cancel: "Tidak",
+		catch: {
+		  text: "Hapus",
+		  value: "catch",
+		}
+	  },
+	})
+	.then((value) => {
+		switch (value) {
+			case "catch":
+			$.post("pages/histori_delete.php", {
+				id: id
+			},
+				function (data, status) {
+					readRecords();
+				}
+			);
+			break;
+		default:
+			//swal("Batal menghapus");
+			break;
+	}
+	});
+    
 }
 function GetDetails(id) {
     // Add User ID to the hidden field for furture usage
@@ -227,7 +242,7 @@ function UpdateDetails() {
     var mitigasi = $("#u_mitigasi").val();
     var status_risiko = $("#u_status").val();
     if(risiko=='' || mitigasi=='' || status_risiko==''){
-		alert("semua isian harus terisi");
+		 swal("","Semua isian harus terisi","warning");
 	}else{
         // Update the details by requesting to the server using ajax
         $.post("pages/histori_updateDetails.php", {
@@ -238,7 +253,7 @@ function UpdateDetails() {
             },
             function (data, status) {
                 // hide modal popup
-                alert(data);
+                swal(data);
                 $("#update_dev").modal("hide");
                 // reload Users by using readRecords();
                 readRecords();

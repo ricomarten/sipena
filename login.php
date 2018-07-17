@@ -12,6 +12,9 @@
     
     
     <script src="js/jquery-1.11.1.min.js"></script>
+	
+	<script src="js/sweetalert.min.js"></script>
+
 <style>
 html { 
   background: url(img/Kantor.jpg) no-repeat center center fixed; 
@@ -22,7 +25,7 @@ html {
   overflow: hidden;
 }
 
-img{
+.img{
   display: block;
   margin: auto;
   width: 100%;
@@ -246,7 +249,7 @@ a:hover{
 <body>
 	<form action="telalogin.php" method="POST" id="Login">
 <div id="login-button">
-<img src="img/login-w-icon.png"></img>
+<img src="img/login-w-icon.png" class="img"></img>
 </div>
 <div id="container">
 <br>
@@ -255,7 +258,7 @@ a:hover{
    <h2>Badan Pusat Statistik Kabupaten Tapanuli Utara</h2>
    <hr>
   <span class="close-btn">
-    <img src="img/circle_close_delete_-128.png"></img>
+    <img src="img/circle_close_delete_-128.png" class="img"></img>
   </span>
 
   <form action="login.php" id="form-login" method="post">
@@ -272,7 +275,7 @@ a:hover{
 <div id="forgotten-container">
    <h1>Lupa Password</h1>
   <span class="close-btn">
-    <img src="img/circle_close_delete_-128.png"></img>
+    <img src="img/circle_close_delete_-128.png" class="img"></img>
   </span>
 
   <form>
@@ -326,10 +329,12 @@ function SimpanEntri(){
 			success: function (returndata) {
 			  var pesan=returndata.split("#");
 			  if(pesan[0]=="Berhasil login"){
-				  alert(pesan[0]);
-				  location.href='index.php?'+pesan[1];
+				  swal("",pesan[0],"success")
+					.then((value) => {
+					  location.href='index.php?'+pesan[1];
+					});
 			  }else{
-				  alert(returndata);
+				  swal("Maaf",returndata,"error");
 			  }
 			  $("#loadingImage").hide();
 			}
