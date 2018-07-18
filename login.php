@@ -17,7 +17,7 @@
 
 <style>
 html { 
-  background: url(img/Kantor.jpg) no-repeat center center fixed; 
+  background: url(img/KantorBPS.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -99,7 +99,7 @@ h1{
   position: relative;
   margin-top: 0px;
   text-align: center;
-  font-size: 26px;
+  font-size: 24px;
   color: #ddd;
   text-shadow: 3px 3px 10px #000;
 }
@@ -253,9 +253,10 @@ a:hover{
 </div>
 <div id="container">
 <br>
-  <h1>Aplikasi Perencanaan Pengolahan Data (SIPENA)</h1>
+  <h1>APLIKASI PERENCANAAN (SIPENA)</h1>
    <div class="img2"><img class="img2" src="img/750.png" width="50%"></div>
-   <h2>Badan Pusat Statistik Kabupaten Tapanuli Utara</h2>
+   <h2>BADAN PUSAT STATISTIK<br>KABUPATEN TAPANULI UTARA
+</h2>
    <hr>
   <span class="close-btn">
     <img src="img/circle_close_delete_-128.png" class="img"></img>

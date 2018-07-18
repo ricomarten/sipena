@@ -4,7 +4,7 @@
                 <div class="container-fluid">
                     <!-- BEGIN Brand -->
                     <a href="#" class="brand">
-                        <img src="img/SI PENA.png" width="250">
+                        <img src="img/SIPENA.png" width="250">
                     </a>
                     <!-- END Brand -->
 
@@ -100,7 +100,7 @@
 					//if($page=='pengguna') echo "<li class='active'>"; else echo "<li>"; echo"<a href='index.php?".paramEncrypt('page=pengguna')."'><i class='icon-group'></i><span>Kelola Pengguna</span></a></li>";
 				}
 				?>
-                   <li> 
+                   <!-- <li> 
 						<a href="box.html">
                             <i class="icon-list-alt"></i>
                             <span>Box</span>
