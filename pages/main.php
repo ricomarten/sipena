@@ -8,10 +8,41 @@
 	</ul>
 </div>
 <!-- END Breadcrumb -->
+<link href='css/fullcalendar.css' rel='stylesheet' />
+<!-- <link href='../fullcalendar.print.min.css' rel='stylesheet' media='print' />-->
+<script src='js/moment.min.js'></script> 
+<script src='js/fullcalendar.js'></script>
+<script>
+
+  $(document).ready(function() {
+
+    $('#calendar').fullCalendar({
+      defaultDate: '<?php echo date("Y-m-d")?>',
+      editable: true,
+      eventLimit: true, // allow "more" link when too many events
+      events: [
+		<?php	
+			$sql=mysql_query("select * from kegiatan");
+			while($data=mysql_fetch_array($sql)){
+				echo " {";
+				echo "title: '".$data['nama']."',";
+				echo "start: '".$data['jadwal_awal']."',";
+				echo "end: '".$data['jadwal_selesai']."'";
+				echo "},";
+			}
+		?>
+        
+      ]
+    });
+
+  });
+
+</script>
 <style>
 #preview-textfield{
   text-align: center; font-size: 2em; font-weight: bold;
   color: black; font-family: 'Amaranth', sans-serif;
+ 
 }
 </style>
 <!-- BEGIN Main Content -->
@@ -31,16 +62,19 @@
 				$sql=mysql_query("select * from kegiatan");
 				$i=0;
 				while($data=mysql_fetch_array($sql)){
+					$awal = strtotime($data['jadwal_awal']);
+					$akhir = strtotime($data['jadwal_selesai']);
+					$datediff = $akhir - $awal;
 					echo '<div class="span4"><div class="well">';
 					echo '<center><canvas id="canvas-preview'.$i.'"></canvas><div id="preview-textfield'.$i.'"></div></center>';
 					echo "<h4>".$data['nama']."</h4>";
-					echo "<p>".$data['prediksi'].".</p>";
+					echo "<p>Jadwal: ".tanggal($data['jadwal_awal'])." s.d. ".tanggal($data['jadwal_selesai'])." (".(round($datediff / (60 * 60 * 24))+1)." hari)<br>";
+					echo "Prediksi: ".$data['prediksi'].".</p>";
 					echo '</div></div>';
 					$i++;
 				}
 				?>
-                    
-					
+                    			
 				</div>
 			</div>
 		</div>
@@ -48,71 +82,20 @@
 </div>
 
 <div class="row-fluid">
-<?php if($_SESSION['level']==0 || $_SESSION['level']==1 ){ ?>
-	<div class="span2">
-		<div class="box box-orange">
-			<div class="box-title">
-				<h3>Pengaturan Aplikasi</h3>
-			</div>
-			<div class="box-content">
-				<p><?php echo "<a href='index.php?".paramEncrypt('page=pengaturan')."'>"; ?><img src="img/Pengaturan Terkini Icon.png"></a></p>
-			</div>
-		</div>
-	</div>
-	<div class="span2">
-		<div class="box box-red">
-			<div class="box-title">
-				<h3>Perencanaan Pengolahan</h3>
-			</div>
-			<div class="box-content">
-				<p><?php echo "<a href='index.php?".paramEncrypt('page=perencanaan')."'>"; ?><img src="img/Perencanaan Pengolahan Data.png"></a></p>
-			</div>
-		</div>
-	</div>
-<?php } ?>
-	<div class="span2">
+	<div class="span12">
 		<div class="box">
 			<div class="box-title">
-				<h3>Monitoring Perencanaan</h3>
+				<h3><i class="icon-calendar"></i>Kalender Kegiatan</h3>
+				<div class="box-tool">
+					<a data-action="config" data-modal="setting-modal-1" href="#"><i class="icon-gear"></i></a>
+					<a data-action="collapse" href="#"><i class="icon-chevron-up"></i></a>
+				</div>
 			</div>
 			<div class="box-content">
-				<p><?php echo "<a href='index.php?".paramEncrypt('page=monitoring')."'>"; ?><img src="img/Monitoring Perencanaan.png"></a></p>
+				<div id='calendar'></div>
 			</div>
 		</div>
 	</div>
-	<div class="span2">
-		<div class="box">
-			<div class="box-title">
-				<h3>Simulasi Pengolahan</h3>
-			</div>
-			<div class="box-content">
-				<p><?php echo "<a href='index.php?".paramEncrypt('page=simulasi')."'>"; ?><img src="img/Simulasi Pengolahan.gif"></a></p>
-			</div>
-		</div>
-	</div>
-	<div class="span2">
-		<div class="box box-orange">
-			<div class="box-title">
-				<h3>Histori Risiko Pengolahan</h3>
-			</div>
-			<div class="box-content">
-				<p><?php echo "<a href='index.php?".paramEncrypt('page=histori')."'>"; ?><img src="img/Risiko Pengolahan.png"></a>
-			</div>
-		</div>
-	</div>
-	
-<?php if($_SESSION['level']==0){ ?>
-	<div class="span2">
-		<div class="box box-red">
-			<div class="box-title">
-				<h3>Kelola Pengguna</h3>
-			</div>
-			<div class="box-content">
-				<p><?php echo "<a href='index.php?".paramEncrypt('page=pengguna')."'>"; ?><img src="img/Kelola Pengguna.png"></a></p>
-			</div>
-		</div>
-	</div>
-<?php } ?>
 </div>
 
 <script type="text/javascript" src="js/gauge.js"></script>
