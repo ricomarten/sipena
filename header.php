@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="assets/bootstrap/bootstrap-responsive.min.css">
         <link rel="stylesheet" href="assets/font-awesome/css/font-awesome.min.css">
         <link rel="stylesheet" href="assets/normalize/normalize.css">
+        
 		
 		<!-- FAVICONS -->
 		<link rel="icon" href="img/favicon_bps.ico" type="image/x-icon">

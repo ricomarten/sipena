@@ -78,7 +78,7 @@
 					if($page=='perencanaan') echo "<li class='active'>"; else echo "<li>"; echo"<a href='index.php?".paramEncrypt('page=perencanaan')."'><i class='icon-pencil'></i><span>Perencanaan</span></a></li>";
 					if($page=='monitoring') echo "<li class='active'>"; else echo "<li>"; echo"<a href='index.php?".paramEncrypt('page=monitoring')."'><i class='icon-bar-chart'></i><span>Monitoring</span></a></li>";
 					if($page=='simulasi') echo "<li class='active'>"; else echo "<li>"; echo"<a href='index.php?".paramEncrypt('page=simulasi')."'><i class='icon-list-alt'></i><span>Simulasi Pengolahan</span></a></li>";
-					if($page=='histori') echo "<li class='active'>"; else echo "<li>"; echo"<a href='index.php?".paramEncrypt('page=histori')."'><i class='icon-shield'></i><span>Histori Risiko</span></a></li>";
+					if($page=='histori') echo "<li class='active'>"; else echo "<li>"; echo"<a href='index.php?".paramEncrypt('page=histori')."'><i class='icon-shield'></i><span>Mitigasi Pengolahan</span></a></li>";
 					if($page=='pengguna') echo "<li class='active'>"; else echo "<li>"; echo"<a href='index.php?".paramEncrypt('page=pengguna')."'><i class='icon-group'></i><span>Kelola Pengguna</span></a></li>";
 				}
 				else if($_SESSION['level']==1){
@@ -87,7 +87,7 @@
 					if($page=='perencanaan') echo "<li class='active'>"; else echo "<li>"; echo"<a href='index.php?".paramEncrypt('page=perencanaan')."'><i class='icon-pencil'></i><span>Perencanaan</span></a></li>";
 					if($page=='monitoring') echo "<li class='active'>"; else echo "<li>"; echo"<a href='index.php?".paramEncrypt('page=monitoring')."'><i class='icon-bar-chart'></i><span>Monitoring</span></a></li>";
 					if($page=='simulasi') echo "<li class='active'>"; else echo "<li>"; echo"<a href='index.php?".paramEncrypt('page=simulasi')."'><i class='icon-list-alt'></i><span>Simulasi Pengolahan</span></a></li>";
-					if($page=='histori') echo "<li class='active'>"; else echo "<li>"; echo"<a href='index.php?".paramEncrypt('page=histori')."'><i class='icon-shield'></i><span>Histori Risiko</span></a></li>";
+					if($page=='histori') echo "<li class='active'>"; else echo "<li>"; echo"<a href='index.php?".paramEncrypt('page=histori')."'><i class='icon-shield'></i><span>Mitigasi Pengolahan</span></a></li>";
 					//if($page=='pengguna') echo "<li class='active'>"; else echo "<li>"; echo"<a href='index.php?".paramEncrypt('page=pengguna')."'><i class='icon-group'></i><span>Kelola Pengguna</span></a></li>";
 				}
 				else{
@@ -96,7 +96,7 @@
 					//if($page=='perencanaan') echo "<li class='active'>"; else echo "<li>"; echo"<a href='index.php?".paramEncrypt('page=perencanaan')."'><i class='icon-pencil'></i><span>Perencanaan</span></a></li>";
 					if($page=='monitoring') echo "<li class='active'>"; else echo "<li>"; echo"<a href='index.php?".paramEncrypt('page=monitoring')."'><i class='icon-bar-chart'></i><span>Monitoring</span></a></li>";
 					if($page=='simulasi') echo "<li class='active'>"; else echo "<li>"; echo"<a href='index.php?".paramEncrypt('page=simulasi')."'><i class='icon-list-alt'></i><span>Simulasi Pengolahan</span></a></li>";
-					if($page=='histori') echo "<li class='active'>"; else echo "<li>"; echo"<a href='index.php?".paramEncrypt('page=histori')."'><i class='icon-shield'></i><span>Histori Risiko</span></a></li>";
+					if($page=='histori') echo "<li class='active'>"; else echo "<li>"; echo"<a href='index.php?".paramEncrypt('page=histori')."'><i class='icon-shield'></i><span>Mitigasi Pengolahan</span></a></li>";
 					//if($page=='pengguna') echo "<li class='active'>"; else echo "<li>"; echo"<a href='index.php?".paramEncrypt('page=pengguna')."'><i class='icon-group'></i><span>Kelola Pengguna</span></a></li>";
 				}
 				?>

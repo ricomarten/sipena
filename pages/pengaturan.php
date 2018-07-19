@@ -49,6 +49,9 @@
 				<div class="pull-right">
 					<button class="btn btn-info" data-toggle="modal" data-target="#ubah_pengaturan2"><i class="icon-plus"></i> Tambah Pengaturan</button>
 					<br/>
+				</div>
+				<div class="pull-left">
+					<a href="export.php?page=pengaturan" target="_blank"><img src="img/excel_icon.png" width="50px"></img></a>
 					<br/>
 				</div>
 				<div  class="clearfix"></div>

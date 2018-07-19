@@ -35,10 +35,13 @@
 				<div class="pull-right">
 					<a href="?<?php echo paramEncrypt('page=perencanaan&aksi=entri'); ?>" class="btn btn-info"><i class="icon-plus"></i> Entri Perencanaan</a>
 					<br/>
+				</div>
+				<div class="pull-left">
+					<a href="export.php?page=monitoring" target="_blank"><img src="img/excel_icon.png" width="50px"></img></a>
 					<br/>
 				</div>
 				 <div class="clearfix"></div>
-				<table class="table table-advance" id="table1">
+				 <table class="table table-advance" id="table1">
 					<thead>
 						<tr>
 							<th>No</th>

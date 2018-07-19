@@ -247,7 +247,7 @@ a:hover{
 
 </head>
 <body>
-	<form action="telalogin.php" method="POST" id="Login">
+<form action="telalogin.php" method="POST" id="Login">
 <div id="login-button">
 <img src="img/login-w-icon.png" class="img"></img>
 </div>
@@ -279,12 +279,16 @@ a:hover{
     <img src="img/circle_close_delete_-128.png" class="img"></img>
   </span>
 
-  <form>
+<form>
     <input type="email" name="email" placeholder="E-mail">
     <a href="#" class="orange-btn">Get new password</a>
 </div>
 </form>
 <script>
+$(document).ready(function() {
+     $("#container").fadeIn();
+	 $('#login-button').fadeOut();
+});
   $('#login-button').click(function(){
   $('#login-button').fadeOut("slow",function(){
     $("#container").fadeIn();

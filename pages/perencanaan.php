@@ -38,6 +38,9 @@
 				<div class="pull-right">
 					<a href="?<?php echo paramEncrypt('page=perencanaan&aksi=entri'); ?>" class="btn btn-info"><i class="icon-plus"></i> Entri Perencanaan</a>
 					<br/>
+				</div>
+				<div class="pull-left">
+					<a href="export.php?page=perencanaan" target="_blank"><img src="img/excel_icon.png" width="50px"></img></a>
 					<br/>
 				</div>
 				 <div class="clearfix"></div>

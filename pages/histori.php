@@ -6,7 +6,7 @@
 			<a href="index.php">Home</a>
 			<span class="divider"><i class="icon-angle-right"></i></span>
 		</li>
-		<i class="icon-shield"></i><li class="active">Histori Risiko</li>
+		<i class="icon-shield"></i><li class="active">Mitigasi Pengolahan Data</li>
 	</ul>
 </div>
 <!-- END Breadcrumb -->
@@ -15,25 +15,25 @@
 	<div class="span12">
 		<div class="box">
 			<div class="box-title">
-				<h3><i class="icon-shield"></i> Daftar Histori Risiko Pengolahan Data</h3>
+				<h3><i class="icon-shield"></i> Mitigasi Pengolahan Data</h3>
 				<div class="box-tool">
 					<a data-action="collapse" href="#"><i class="icon-chevron-up"></i></a>
 				</div>
 			</div>
 			<div class="box-content">
 				<div class="pull-right">
-					<button class="btn btn-info" data-toggle="modal" data-target="#tambah_dev"><i class="icon-plus"></i> Tambah Histori</button>
+					<button class="btn btn-info" data-toggle="modal" data-target="#tambah_dev"><i class="icon-plus"></i> Tambah Mitigasi</button>
 					<br/>
 					<br/>
 				</div>
-				<input type="text" id="myInput" onkeyup="Searching()" placeholder="Cari risiko.." title="Type in a name">
+				<input type="text" id="myInput" onkeyup="Searching()" placeholder="Cari permasalahan" title="Ketik Permasalahan"><a href="export.php?page=mitigasi" target="_blank"><img src="img/excel_icon.png" width="50px"></img></a>
 				<table id="user" class="table table-bordered table-hover">
 					<thead>
 						<tr>
 							<th><center>No</center></th>    
-							<th><center>Risiko yang Pernah Terjadi</center></th>
-							<th><center>Tindakan Mitigasi Risiko</center></th>
-							<th><center>Status</center></th>
+							<th><center>Masalah</center></th>
+							<th><center>Dampak</center></th>
+							<th><center>Solusi</center></th>
 							<th><center>Aksi</center></th>
 						</tr>
 					</thead>
@@ -52,26 +52,26 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Tambah Histori Risiko</h4>
+                <h4 class="modal-title" id="myModalLabel">Tambah Mitigasi</h4>
             </div>
             <div class="modal-body">
             
             <form name="modul" action="?<?php echo paramEncrypt('page=pengguna'); ?>" class="form-horizontal"  method="post" >
 				<div class="box-body">
 					<div class="control-group">
-						<label class="span-2 control-label">Risiko yang Terjadi</label>
+						<label class="span-2 control-label">Masalah</label>
 						<div class="span-10">
 							<textarea id="risiko" name="risiko"  rows="3"></textarea>	
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="span-2 control-label">Tindakan Mitigasi</label>
+						<label class="span-2 control-label">Dampak</label>
 						<div class="span-10">	
 							<textarea id="mitigasi" name="mitigasi"  rows="3"></textarea>							
 						</div>
 					</div>
 					<div class="control-group">
-						<label class="span-2 control-label">Status</label>
+						<label class="span-2 control-label">Solusi</label>
 						<div class="span-10">       
 							<textarea id="status" name="status"  rows="3"></textarea>
 						</div>
@@ -92,7 +92,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Update Pengguna</h4>
+                <h4 class="modal-title" id="myModalLabel">Update Mitigasi</h4>
             </div>
             <div class="modal-body">
 
@@ -100,19 +100,19 @@
             <div class="box-body">
 				<input type="hidden" id="u_id" name="u_id"/>
                 <div class="control-group">
-                  <label class="span-2 control-label">Risiko yang Terjadi</label>					
+                  <label class="span-2 control-label">Masalah</label>					
                   <div class="span-10">       
 					<textarea id="u_risiko" name="u_risiko"  rows="3"></textarea>			  
                   </div>
                 </div>
 				<div class="control-group">
-					<label class="span-2 control-label">Tindakan Mitigasi</label>
+					<label class="span-2 control-label">Dampak</label>
 					<div class="span-10">	
 						<textarea id="u_mitigasi" name="u_mitigasi"  rows="3"></textarea>							
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="span-2 control-label">Status</label>					
+					<label class="span-2 control-label">Solusi</label>					
 					<div class="span-10">       
 						<textarea id="u_status" name="u_status"  rows="3"></textarea>			  
 					</div>
@@ -188,7 +188,7 @@ function addRecord() {
 }
 // Delete Record
 function Delete(id,risiko) {
-	swal("Apakah yakin akan menghapus perencanaan \""+risiko+"\"?", {
+	swal("Apakah yakin akan menghapus mitigasi untuk \""+risiko+"\"?", {
 	  buttons: {
 		cancel: "Tidak",
 		catch: {

@@ -9,7 +9,6 @@
 </div>
 <!-- END Breadcrumb -->
 <link href='css/fullcalendar.css' rel='stylesheet' />
-<!-- <link href='../fullcalendar.print.min.css' rel='stylesheet' media='print' />-->
 <script src='js/moment.min.js'></script> 
 <script src='js/fullcalendar.js'></script>
 <script>
@@ -17,10 +16,23 @@
   $(document).ready(function() {
 
     $('#calendar').fullCalendar({
-      defaultDate: '<?php echo date("Y-m-d")?>',
-      editable: true,
-      eventLimit: true, // allow "more" link when too many events
-      events: [
+		header: {
+			left: 'prev,next today',
+			center: 'title',
+			right: 'month,listWeek'
+		},
+		buttonText:{
+			today:    'Hari ini',
+			month:    'Lihat per Bulan',
+			week:     'week',
+			day:      'day',
+			list:     'List'
+		},
+		defaultDate: '<?php echo date("Y-m-d")?>',
+		navLinks: true, // can click day/week names to navigate views
+     	editable: true,
+		eventLimit: true, // allow "more" link when too many events
+		events: [
 		<?php	
 			$sql=mysql_query("select * from kegiatan");
 			while($data=mysql_fetch_array($sql)){
@@ -50,18 +62,19 @@
 	<div class="span12">
 		<div class="box">
 			<div class="box-title">
-				<h3><i class="icon-bar-chart"></i>Dashboard</h3>
+				<h3><i class="icon-dashboard"></i></i>Dashboard</h3>
 				<div class="box-tool">
 					<a data-action="config" data-modal="setting-modal-1" href="#"><i class="icon-gear"></i></a>
 					<a data-action="collapse" href="#"><i class="icon-chevron-up"></i></a>
 				</div>
 			</div>
-			<div class="box-content">
-				<div class="row-fluid">
+			<div class="box-content">			
 				<?php
 				$sql=mysql_query("select * from kegiatan");
 				$i=0;
 				while($data=mysql_fetch_array($sql)){
+					$max=mysql_num_rows($sql);
+					if($i%3==0) echo '<div class="row-fluid">';
 					$awal = strtotime($data['jadwal_awal']);
 					$akhir = strtotime($data['jadwal_selesai']);
 					$datediff = $akhir - $awal;
@@ -70,12 +83,11 @@
 					echo "<h4>".$data['nama']."</h4>";
 					echo "<p>Jadwal: ".tanggal($data['jadwal_awal'])." s.d. ".tanggal($data['jadwal_selesai'])." (".(round($datediff / (60 * 60 * 24))+1)." hari)<br>";
 					echo "Prediksi: ".$data['prediksi'].".</p>";
-					echo '</div></div>';
+					echo '</div></div>';		
 					$i++;
+					if($i%3==0 || $max==$i) echo '</div>';
 				}
-				?>
-                    			
-				</div>
+				?>				
 			</div>
 		</div>
 	</div>

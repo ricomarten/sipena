@@ -2715,7 +2715,7 @@ exports.globalDefaults = {
         nextYear: 'next year',
         year: 'year',
         today: 'Hari ini',
-        month: 'month',
+        month: 'Bulan',
         week: 'week',
         day: 'day'
     },
