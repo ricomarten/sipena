@@ -69,7 +69,7 @@
 						echo "<td>".$data['nama']."</td>";
 						echo "<td>".tanggal($data['jadwal_awal'])." s.d. ".tanggal($data['jadwal_selesai'])." (".(round($datediff / (60 * 60 * 24))+1)." hari)</td>";
 						echo "<td>".$data['hari_kerja']." hari <ul>";
-						$kal_keg=mysql_query("select * from kalender_kegiatan where id_kegiatan='".$data['id']."'");
+						$kal_keg=mysql_query("select * from kalender_kegiatan where id_kegiatan='".$data['id']."' order by tanggal asc");
 						while($data_kal=mysql_fetch_array($kal_keg)){
 							echo "<li>".tanggal($data_kal['tanggal'])."</li>";
 						}

@@ -84,6 +84,15 @@
 						</div>
 					</div>
 				</div>
+				<div class="control-group">
+					<label class="control-label">Rencana Hari Kerja</label>
+					<div class="controls">
+						<button class="add_form_field">Tambah Hari <i class="icon-plus"></i></button>
+						<div class="container1">					
+							<div class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span><input class="date-picker" size="16" type="text" name="hari[]"></div>
+						</div>
+					</div>
+				</div>
 				<div class="form-actions">
 					<button type="button" class="btn btn-primary" onclick="SimpanEntri();"><i class="icon-search"></i> Simulasi</button>			
 					<a href="?<?php echo paramEncrypt('page=main'); ?>" type="button" class="btn">Kembali</a>
@@ -173,11 +182,12 @@ function SimpanEntri(){
 	var olah       	= $("#olah").val();
 	var jam_kerja   = $("#jam_kerja").val();
 	var pc      	= $("#pc").val();
+	var tanggal     = document.getElementsByName("hari[]")[0].value;
 	var hari = [];
 	for(var i=0; i < document.getElementsByName("hari[]").length;i++){
 		hari.push(document.getElementsByName("hari[]")[i].value);
 	} 
-	if(jadwal_awal=="" || jadwal_akhir=="" || target=="" || olah=="" || jam_kerja=="" || pc==""  ){
+	if(jadwal_awal=="" || jadwal_akhir=="" || target=="" || olah=="" || jam_kerja=="" || pc=="" || hari.length==0 || tanggal==""){
 	    swal("","Semua isian harus terisi","warning");
 	}else{ 
 	    $("#loadingImage").show();

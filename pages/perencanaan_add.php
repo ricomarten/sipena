@@ -94,8 +94,15 @@ else{
 	}
 	if($berhasil){	
 		
-		$datediff = strtotime(tanggal($_POST['jadwal_akhir'])) - strtotime(tanggal($_POST['jadwal_awal']));
-		$A=(round($datediff / (60 * 60 * 24))+1);
+		//$datediff = strtotime(tanggal($_POST['jadwal_akhir'])) - strtotime(tanggal($_POST['jadwal_awal']));
+		//$A=(round($datediff / (60 * 60 * 24))+1);
+		$hari_pengolahan=0;
+		for($i=0;$i<count($_POST['hari']);$i++){
+			if($_POST['hari'][$i]!=""){
+				$hari_pengolahan++;
+			}		
+		}
+		$A=round($hari_pengolahan);
 		$B=$_POST['target'];
 		$C=$_POST['olah'];
 		$D=$B*$C;
@@ -121,7 +128,10 @@ else{
 		if($A<$H){
 			$rekomendasi="Menambah $rek PC Pengolahan atau <br>Penambahan jam kerja menjadi ".($rek2+$E)." jam perhari";
 		}else $rekomendasi="";
-		
+		$date = tanggal($_POST['jadwal_awal']);
+		$newdate = strtotime ( '-1 day' , strtotime ( $date ) ) ;
+		$newdate = date ( 'j-m-Y' , $newdate );
+		$rekomendasi.=" <br><i>Dokumen yang akan diolah harus sudah diserahkan paling lambat tanggal ".bulan($newdate)."</i>";
 		$result=mysql_query("INSERT INTO kegiatan(nama,jadwal_awal,jadwal_selesai,target_dokumen,waktu_olah,jam_kerja,hari_kerja,pc,prediksi,rekomendasi) 
 		VALUES ('".$_POST['nama']."','".tanggal($_POST['jadwal_awal'])."','".tanggal($_POST['jadwal_akhir'])."','".$_POST['target']."','".$_POST['olah']."','".$_POST['jam_kerja']."','".$hari_pengolahan."','".$_POST['pc']."','".$prediksi."','".$rekomendasi."')");
 		if($result){

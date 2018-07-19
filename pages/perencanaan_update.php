@@ -104,8 +104,15 @@ else{
 	}
 	if($berhasil){	
 		
-		$datediff = strtotime(tanggal($_POST['jadwal_akhir'])) - strtotime(tanggal($_POST['jadwal_awal']));
-		$A=(round($datediff / (60 * 60 * 24))+1);
+		//$datediff = strtotime(tanggal($_POST['jadwal_akhir'])) - strtotime(tanggal($_POST['jadwal_awal']));
+		//$A=(round($datediff / (60 * 60 * 24))+1);
+		$hari_pengolahan=0;
+		for($i=0;$i<count($_POST['hari']);$i++){
+			if($_POST['hari'][$i]!=""){
+				$hari_pengolahan++;
+			}		
+		}
+		$A=round($hari_pengolahan);
 		$B=$_POST['target'];
 		$C=$_POST['olah'];
 		$D=$B*$C;
@@ -132,6 +139,10 @@ else{
 		if($A<$H){
 			$rekomendasi="Menambah $rek PC Pengolahan atau <br>Penambahan jam kerja menjadi ".($rek2+$E)." jam perhari";
 		}else $rekomendasi="";
+		$date = tanggal($_POST['jadwal_awal']);
+		$newdate = strtotime ( '-1 day' , strtotime ( $date ) ) ;
+		$newdate = date ( 'j-m-Y' , $newdate );
+		$rekomendasi.=" <br><i>Dokumen yang akan diolah harus sudah diserahkan paling lambat tanggal ".bulan($newdate)."</i>";
 		
 		$result=mysql_query("update kegiatan set nama='".$_POST['nama']."',
 												jadwal_awal='".tanggal($_POST['jadwal_awal'])."',

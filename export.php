@@ -39,6 +39,7 @@ if($_GET['page']=='monitoring'){
 			<th>No</th>
 			<th>Nama Kegiatan Pengolahan Data</th>
 			<th>Waktu Pengolahan</th>
+			<th>Rencana Pengerjaan</th>
 			<th>Keterangan</th>
 			<th>Rekomendasi</th>
 		</tr>";
@@ -53,7 +54,13 @@ if($_GET['page']=='monitoring'){
 		echo "<tr>";
 		echo "<td>".$i."</td>";
 		echo "<td>".$data['nama']."</td>";
-		echo "<td>".tanggal($data['jadwal_awal'])." s.d. ".tanggal($data['jadwal_selesai'])." (".(round($datediff / (60 * 60 * 24))+1)." hari)</td>";
+		echo "<td>".bulan(tanggal($data['jadwal_awal']))." s.d. ".bulan(tanggal($data['jadwal_selesai']))." (".(round($datediff / (60 * 60 * 24))+1)." hari)</td>";
+		echo "<td>".$data['hari_kerja']." hari <ul>";
+		$kal_keg=mysql_query("select * from kalender_kegiatan where id_kegiatan='".$data['id']."' order by tanggal asc");
+		while($data_kal=mysql_fetch_array($kal_keg)){
+			echo "<li>".bulan(tanggal($data_kal['tanggal']))."</li>";
+		}
+		echo "</ul></td>";
 		echo "<td>".$data['prediksi']."</td>";
 		echo "<td>".$data['rekomendasi']."</td>";			
 		echo "</tr>";

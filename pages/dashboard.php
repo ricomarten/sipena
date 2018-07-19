@@ -1,55 +1,16 @@
 <!-- BEGIN Breadcrumb -->
 <div id="breadcrumbs">
 	<ul class="breadcrumb">
-		<li class="active">
+		<li>
 			<i class="icon-home"></i>
 			<a href="index.php">Home</a>
+			<span class="divider"><i class="icon-angle-right"></i></span>
 		</li>
+		<i class="icon-dashboard"></i><li class="active">Dashboard</li>
 	</ul>
 </div>
 <!-- END Breadcrumb -->
-<link href='css/fullcalendar.css' rel='stylesheet' />
-<script src='js/moment.min.js'></script> 
-<script src='js/fullcalendar.js'></script>
-<script>
 
-  $(document).ready(function() {
-
-    $('#calendar').fullCalendar({
-		header: {
-			left: 'prev,next today',
-			center: 'title',
-			right: 'month,listWeek'
-		},
-		buttonText:{
-			today:    'Hari ini',
-			month:    'Lihat per Bulan',
-			week:     'week',
-			day:      'day',
-			list:     'List'
-		},
-		defaultDate: '<?php echo date("Y-m-d")?>',
-		navLinks: true, // can click day/week names to navigate views
-     	editable: true,
-		eventLimit: true, // allow "more" link when too many events
-		events: [
-		<?php	
-			$sql=mysql_query("SELECT kal.*,k.nama FROM `kalender_kegiatan` kal left join kegiatan k on k.id=kal.id_kegiatan ");
-			while($data=mysql_fetch_array($sql)){
-				echo " {";
-				echo "title: '".$data['nama']."',";
-				echo "start: '".$data['tanggal']."',";
-				//echo "end: '".$data['jadwal_selesai']."'";
-				echo "},";
-			}
-		?>
-        
-      ]
-    });
-
-  });
-
-</script>
 <style>
 #preview-textfield{
   text-align: center; font-size: 2em; font-weight: bold;
@@ -59,7 +20,7 @@
 </style>
 <!-- BEGIN Main Content -->
 <div class="row-fluid">
-	<div class="span6">
+	<div class="span12">
 		<div class="box">
 			<div class="box-title">
 				<h3><i class="icon-dashboard"></i></i>Dashboard</h3>
@@ -70,44 +31,24 @@
 			</div>
 			<div class="box-content">			
 				<?php
-				$sql=mysql_query("select * from kegiatan LIMIT 3");
+				$sql=mysql_query("select * from kegiatan");
 				$i=0;
 				while($data=mysql_fetch_array($sql)){
 					$max=mysql_num_rows($sql);
-					if($i%2==0) echo '<div class="row-fluid">';
+					if($i%3==0) echo '<div class="row-fluid">';
 					$awal = strtotime($data['jadwal_awal']);
 					$akhir = strtotime($data['jadwal_selesai']);
 					$datediff = $akhir - $awal;
-					echo '<div class="span6"><div class="well">';
+					echo '<div class="span4"><div class="well">';
 					echo '<center><canvas id="canvas-preview'.$i.'"></canvas><div id="preview-textfield'.$i.'"></div></center>';
 					echo "<h4>".$data['nama']."</h4>";
 					echo "<p>Jadwal: ".tanggal($data['jadwal_awal'])." s.d. ".tanggal($data['jadwal_selesai'])." (".(round($datediff / (60 * 60 * 24))+1)." hari)<br>";
 					echo "Prediksi: ".$data['prediksi'].".</p>";
 					echo '</div></div>';		
 					$i++;
-					if($i%2==0) echo '</div>';
+					if($i%3==0 || $max==$i) echo '</div>';
 				}
 				?>	
-				<div class="span6">
-				<ul class="pager">
-					<li class="next"><?php echo "<a href='index.php?".paramEncrypt('page=dashboard')."'>Lihat Dashboard Selengkapnya &rarr;</a>";?></li>
-				</ul>
-				</div></div>
-			</div>
-		</div>
-	</div>
-
-	<div class="span6">
-		<div class="box">
-			<div class="box-title">
-				<h3><i class="icon-calendar"></i>Kalender Kegiatan</h3>
-				<div class="box-tool">
-					<a data-action="config" data-modal="setting-modal-1" href="#"><i class="icon-gear"></i></a>
-					<a data-action="collapse" href="#"><i class="icon-chevron-up"></i></a>
-				</div>
-			</div>
-			<div class="box-content">
-				<div id='calendar'></div>
 			</div>
 		</div>
 	</div>
@@ -146,7 +87,7 @@ var opts = {
   
 };
 <?php
-	$sql=mysql_query("select * from kegiatan LIMIT 3");
+	$sql=mysql_query("select * from kegiatan");
 	$i=0;
 	while($data=mysql_fetch_array($sql)){
 		$datediff = strtotime($data['jadwal_selesai']) - strtotime($data['jadwal_awal']);
