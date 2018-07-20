@@ -5,7 +5,7 @@ while($data=mysql_fetch_array($query)){
 echo "<tr>";
 	$tgl=explode("-",$data['tanggal']);
 	$tanggal=$tgl[2]."-".$tgl[1]."-".$tgl[0];
-	echo "<td>".$tanggal."</td>";
+	echo "<td>".bulan($tanggal)."</td>";
 	echo "<td>".$data['jam_kerja']."</td>";
 	echo "<td>".$data['pc']."</td>";
 	echo "<td>";

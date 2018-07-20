@@ -1,4 +1,52 @@
 <!-- BEGIN Breadcrumb -->
+<style>
+	.tutorial-table {
+	    border: #e1e0e0 1px solid;
+	}
+	.tutorial-table th {
+	    text-align: left;
+	    background: #f0F0F0;
+	    padding: 10px;
+	}
+	.tutorial-table td {
+	    border-bottom: #e1e0e0 1px solid;
+	    padding: 10px;
+	}
+	
+	@media screen and (max-width: 900px) and (min-width: 550px) {
+		.priority-5{
+			display:none;
+		}
+	}
+	
+	@media screen and (max-width: 550px) {
+		.priority-5{
+			display:none;
+		}
+		.priority-4{
+			display:none;
+		}
+		.priority-3{
+			display:none;
+		}
+	}
+	
+	@media screen and (max-width: 300px) {
+		.priority-5{
+			display:none;
+		}
+		.priority-4{
+			display:none;
+		}
+		.priority-3{
+			display:none;
+		}
+		.priority-2{
+			display:none;
+		}
+	
+	}
+	</style>
 <!--page specific css styles-->
         <link rel="stylesheet" type="text/css" href="assets/chosen-bootstrap/chosen.min.css" />
         <link rel="stylesheet" type="text/css" href="assets/jquery-tags-input/jquery.tagsinput.css" />
@@ -44,14 +92,14 @@
 					<br/>
 				</div>
 				 <div class="clearfix"></div>
-				<table class="table table-advance" id="table1">
+				<table class="table table-advance tutorial-table" id="table1">
 					<thead>
 						<tr>
-							<th>No</th>
-							<th>Nama Kegiatan Pengolahan Data</th>
-							<th>Jadwal Pengolahan Data</th>
-							<th>Rencana Pengerjaan</th>
-							<th>Aksi</th>
+							<th class="priority-1">No</th>
+							<th class="priority-2">Nama Kegiatan</th>
+							<th class="priority-3">Jadwal</th>
+							<th class="priority-4">Rencana Pengerjaan</th>
+							<th class="priority-2">Aksi</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -65,16 +113,16 @@
 						//echo round($datediff / (60 * 60 * 24));
 						
 						echo "<tr>";
-						echo "<td>".$i."</td>";
-						echo "<td>".$data['nama']."</td>";
-						echo "<td>".tanggal($data['jadwal_awal'])." s.d. ".tanggal($data['jadwal_selesai'])." (".(round($datediff / (60 * 60 * 24))+1)." hari)</td>";
-						echo "<td>".$data['hari_kerja']." hari <ul>";
+						echo "<td class='priority-1'>".$i."</td>";
+						echo "<td class='priority-2'>".$data['nama']."</td>";
+						echo "<td class='priority-3'>".bulan(tanggal($data['jadwal_awal']))." s.d. ".bulan(tanggal($data['jadwal_selesai']))." (".(round($datediff / (60 * 60 * 24))+1)." hari)</td>";
+						echo "<td class='priority-4'>".$data['hari_kerja']." hari <ul>";
 						$kal_keg=mysql_query("select * from kalender_kegiatan where id_kegiatan='".$data['id']."' order by tanggal asc");
 						while($data_kal=mysql_fetch_array($kal_keg)){
 							echo "<li>".tanggal($data_kal['tanggal'])."</li>";
 						}
 						echo "</ul></td>";
-						echo "<td>
+						echo "<td class='priority-2'>
 								<div class='btn-group'>
 									<a class='btn show-tooltip' title='Lihat Detail' href='?".paramEncrypt('page=perencanaan&aksi=detail&id='.$data['id'].'')."'><i class='icon-search'></i></a>&nbsp;
 									<a class='btn btn-warning show-tooltip' title='Edit' href='?".paramEncrypt('page=perencanaan&aksi=edit&id='.$data['id'].'')."'><i class='icon-edit'></i></a>&nbsp;

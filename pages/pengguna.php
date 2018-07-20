@@ -1,4 +1,55 @@
 <!-- BEGIN Breadcrumb -->
+<style>
+	.tutorial-table {
+	    border: #e1e0e0 1px solid;
+	}
+	.tutorial-table th {
+	    text-align: left;
+	    background: #f0F0F0;
+	    padding: 10px;
+	}
+	.tutorial-table td {
+	    border-bottom: #e1e0e0 1px solid;
+	    padding: 10px;
+	}
+	
+	@media screen and (max-width: 900px) and (min-width: 550px) {
+		.priority-5{
+			display:none;
+		}
+		.priority-4{
+			display:none;
+		}
+	}
+	
+	@media screen and (max-width: 550px) {
+		.priority-5{
+			display:none;
+		}
+		.priority-4{
+			display:none;
+		}
+		.priority-3{
+			display:none;
+		}
+	}
+	
+	@media screen and (max-width: 300px) {
+		.priority-5{
+			display:none;
+		}
+		.priority-4{
+			display:none;
+		}
+		.priority-3{
+			display:none;
+		}
+		.priority-2{
+			display:none;
+		}
+	
+	}
+</style>
 <div id="breadcrumbs">
 	<ul class="breadcrumb">
 		<li>
@@ -26,14 +77,14 @@
 					<br/>
 					<br/>
 				</div>
-				<input type="text" id="myInput" onkeyup="Searching()" placeholder="Cari username.." title="Type in a name">
-				<table id="user" class="table table-bordered table-hover">
+				<input type="text" id="myInput" onkeyup="Searching()" placeholder="Cari username.." title="Type in a username">
+				<table id="user" class="table table-bordered table-hover tutorial-table">
 					<thead>
 						<tr>
-							<th><center>Username</center></th>    
-							<th><center>Password</center></th>
-							<th><center>Status Pengguna</center></th>
-							<th><center>Aksi</center></th>
+							<th class="priority-1"><center>Username</center></th>    
+							<th class="priority-4"><center>Password</center></th>
+							<th class="priority-3"><center>Status Pengguna</center></th>
+							<th class="priority-2"><center>Aksi</center></th>
 						</tr>
 					</thead>
 					<tbody class="records_content">	
