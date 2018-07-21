@@ -5245,3 +5245,304 @@
 #=#=#=# Syncrun started 2018-07-21T02:05:30Z
 #=#=#=#=# Propagation starts 2018-07-21T02:05:33Z (last step: 3110 msec, total: 3110 msec)
 #=#=#=# Syncrun finished 2018-07-21T02:05:33Z (last step: 215 msec, total: 3326 msec)
+#=#=#=# Syncrun started 2018-07-21T02:42:07Z
+#=#=#=#=# Propagation starts 2018-07-21T02:42:08Z (last step: 1083 msec, total: 1083 msec)
+02:42:11||pages/main.php|INST_SYNC|Up|1532140925|4f4ad429a2de708d881610fabe180f3a|5653|1201070950d2d97dd6515|4||204|5648|1532100678||||
+#=#=#=# Syncrun finished 2018-07-21T02:42:12Z (last step: 3599 msec, total: 4682 msec)
+#=#=#=# Syncrun started 2018-07-21T02:42:28Z
+#=#=#=#=# Propagation starts 2018-07-21T02:42:30Z (last step: 2167 msec, total: 2167 msec)
+02:42:33||pages/main.php|INST_SYNC|Up|1532140946|8b85dce4c1f40398715e75ef0f5dfb88|5659|1201070950d2d97dd6515|4||204|5653|1532140925||||
+#=#=#=# Syncrun finished 2018-07-21T02:42:33Z (last step: 2621 msec, total: 4788 msec)
+#=#=#=# Syncrun started 2018-07-21T02:43:05Z
+#=#=#=#=# Propagation starts 2018-07-21T02:43:07Z (last step: 1817 msec, total: 1817 msec)
+02:43:09||pages/main.php|INST_SYNC|Up|1532140984|dd371fd491bda6de1ff8ad9f34a708c1|5660|1201070950d2d97dd6515|4||204|5659|1532140946||||
+#=#=#=# Syncrun finished 2018-07-21T02:43:10Z (last step: 2570 msec, total: 4387 msec)
+#=#=#=# Syncrun started 2018-07-21T02:43:13Z
+#=#=#=#=# Propagation starts 2018-07-21T02:43:15Z (last step: 2355 msec, total: 2355 msec)
+#=#=#=# Syncrun finished 2018-07-21T02:43:15Z (last step: 130 msec, total: 2486 msec)
+#=#=#=# Syncrun started 2018-07-21T02:43:18Z
+#=#=#=#=# Propagation starts 2018-07-21T02:43:19Z (last step: 751 msec, total: 751 msec)
+02:43:21||pages/main.php|INST_SYNC|Up|1532140994|ad28a19c3469de6bb5606a8ead5ef33c|5659|1201070950d2d97dd6515|4||204|5660|1532140984||||
+#=#=#=# Syncrun finished 2018-07-21T02:43:21Z (last step: 2520 msec, total: 3272 msec)
+#=#=#=# Syncrun started 2018-07-21T02:44:06Z
+#=#=#=#=# Propagation starts 2018-07-21T02:44:08Z (last step: 2263 msec, total: 2263 msec)
+#=#=#=# Syncrun finished 2018-07-21T02:44:09Z (last step: 157 msec, total: 2420 msec)
+#=#=#=# Syncrun started 2018-07-21T02:45:28Z
+#=#=#=#=# Propagation starts 2018-07-21T02:45:29Z (last step: 1633 msec, total: 1633 msec)
+02:45:33||pages/main.php|INST_SYNC|Up|1532141126|266360f349d5c02f8c8df311c4115ce0|5673|1201070950d2d97dd6515|4||204|5659|1532140994||||
+#=#=#=# Syncrun finished 2018-07-21T02:45:33Z (last step: 3841 msec, total: 5475 msec)
+#=#=#=# Syncrun started 2018-07-21T02:45:37Z
+#=#=#=#=# Propagation starts 2018-07-21T02:45:39Z (last step: 1878 msec, total: 1878 msec)
+02:45:41||pages/main.php|INST_SYNC|Up|1532141129|330d33c1b16134d0a4d8126b574cc5af|5664|1201070950d2d97dd6515|4||204|5673|1532141126||||
+#=#=#=# Syncrun finished 2018-07-21T02:45:41Z (last step: 2482 msec, total: 4360 msec)
+#=#=#=# Syncrun started 2018-07-21T02:46:38Z
+#=#=#=#=# Propagation starts 2018-07-21T02:46:40Z (last step: 1864 msec, total: 1864 msec)
+#=#=#=# Syncrun finished 2018-07-21T02:46:40Z (last step: 209 msec, total: 2074 msec)
+#=#=#=# Syncrun started 2018-07-21T02:47:52Z
+#=#=#=#=# Propagation starts 2018-07-21T02:47:58Z (last step: 6238 msec, total: 6238 msec)
+02:48:00||pages/main.php|INST_SYNC|Up|1532141270|46c9cc3b429d0de423086e214d47c495|5648|1201070950d2d97dd6515|4||204|5664|1532141129||||
+#=#=#=# Syncrun finished 2018-07-21T02:48:01Z (last step: 2489 msec, total: 8727 msec)
+#=#=#=# Syncrun started 2018-07-21T02:48:36Z
+#=#=#=#=# Propagation starts 2018-07-21T02:48:38Z (last step: 2770 msec, total: 2770 msec)
+#=#=#=# Syncrun finished 2018-07-21T02:48:39Z (last step: 224 msec, total: 2995 msec)
+#=#=#=# Syncrun started 2018-07-21T02:48:46Z
+#=#=#=#=# Propagation starts 2018-07-21T02:48:46Z (last step: 725 msec, total: 725 msec)
+02:48:49||pages/main.php|INST_SYNC|Up|1532141324|ab441f8cc9ee1ae28e112c33a964a211|5677|1201070950d2d97dd6515|4||204|5648|1532141270||||
+#=#=#=# Syncrun finished 2018-07-21T02:48:49Z (last step: 2483 msec, total: 3209 msec)
+#=#=#=# Syncrun started 2018-07-21T02:49:35Z
+#=#=#=#=# Propagation starts 2018-07-21T02:49:38Z (last step: 2426 msec, total: 2426 msec)
+#=#=#=# Syncrun finished 2018-07-21T02:49:38Z (last step: 402 msec, total: 2828 msec)
+#=#=#=# Syncrun started 2018-07-21T04:50:16Z
+#=#=#=#=# Propagation starts 2018-07-21T04:50:17Z (last step: 853 msec, total: 853 msec)
+#=#=#=# Syncrun finished 2018-07-21T04:50:33Z (last step: 16139 msec, total: 16992 msec)
+#=#=#=# Syncrun started 2018-07-21T04:50:43Z
+#=#=#=#=# Propagation starts 2018-07-21T04:50:45Z (last step: 1845 msec, total: 1845 msec)
+#=#=#=# Syncrun finished 2018-07-21T04:50:47Z (last step: 2035 msec, total: 3880 msec)
+#=#=#=# Syncrun started 2018-07-21T07:10:09Z
+#=#=#=#=# Propagation starts 2018-07-21T07:10:10Z (last step: 1301 msec, total: 1301 msec)
+#=#=#=# Syncrun finished 2018-07-21T07:10:12Z (last step: 1714 msec, total: 3016 msec)
+#=#=#=# Syncrun started 2018-07-21T07:10:22Z
+#=#=#=#=# Propagation starts 2018-07-21T07:10:23Z (last step: 1002 msec, total: 1002 msec)
+#=#=#=# Syncrun finished 2018-07-21T07:10:24Z (last step: 843 msec, total: 1846 msec)
+#=#=#=# Syncrun started 2018-07-21T07:58:02Z
+#=#=#=#=# Propagation starts 2018-07-21T07:58:04Z (last step: 1199 msec, total: 1199 msec)
+#=#=#=# Syncrun finished 2018-07-21T07:58:04Z (last step: 75 msec, total: 1275 msec)
+#=#=#=# Syncrun started 2018-07-21T07:58:33Z
+#=#=#=#=# Propagation starts 2018-07-21T07:58:34Z (last step: 1412 msec, total: 1412 msec)
+07:58:38||pages/dashboard.php|INST_SYNC|Up|1532159911|7166314919fac220892a386da242e3d5|4008|1201070050d2d97dd6515|4||204|3988|1532098725||||
+#=#=#=# Syncrun finished 2018-07-21T07:58:37Z (last step: 2946 msec, total: 4359 msec)
+#=#=#=# Syncrun started 2018-07-21T07:59:23Z
+#=#=#=#=# Propagation starts 2018-07-21T07:59:26Z (last step: 2346 msec, total: 2346 msec)
+#=#=#=# Syncrun finished 2018-07-21T07:59:26Z (last step: 233 msec, total: 2580 msec)
+#=#=#=# Syncrun started 2018-07-21T08:09:57Z
+#=#=#=#=# Propagation starts 2018-07-21T08:09:58Z (last step: 1004 msec, total: 1004 msec)
+08:10:02||New Text Document.txt|INST_NEW|Up|1532160595|6fced6bbd11a3a1d7ba52dd839685f24|0|1201271150d2d97dd6515|4||201|0|0||||
+#=#=#=# Syncrun finished 2018-07-21T08:10:03Z (last step: 4287 msec, total: 5292 msec)
+#=#=#=# Syncrun started 2018-07-21T08:10:16Z
+#=#=#=#=# Propagation starts 2018-07-21T08:10:18Z (last step: 1710 msec, total: 1710 msec)
+08:10:20||New Text Document.txt -> template.php|INST_RENAME|Up|1532160595|6fced6bbd11a3a1d7ba52dd839685f24|0|1201271150d2d97dd6515|4||201|0|0||||
+#=#=#=# Syncrun finished 2018-07-21T08:10:20Z (last step: 2058 msec, total: 3768 msec)
+#=#=#=# Syncrun started 2018-07-21T08:10:23Z
+#=#=#=#=# Propagation starts 2018-07-21T08:10:24Z (last step: 954 msec, total: 954 msec)
+08:10:26||template.php|INST_SYNC|Up|1532160619|e28362b2ce2e00d95657a880724d9761|1094|1201271150d2d97dd6515|4||204|0|1532160595||||
+#=#=#=# Syncrun finished 2018-07-21T08:10:26Z (last step: 2265 msec, total: 3220 msec)
+#=#=#=# Syncrun started 2018-07-21T08:10:53Z
+#=#=#=#=# Propagation starts 2018-07-21T08:10:54Z (last step: 1311 msec, total: 1311 msec)
+08:10:57||pages/monitoring.php|INST_SYNC|Up|1532160650|4408549120fa55ceff8880af63e6b917|7688|1189742350d2d97dd6515|4||204|7534|1532138665||||
+#=#=#=# Syncrun finished 2018-07-21T08:10:57Z (last step: 3341 msec, total: 4652 msec)
+#=#=#=# Syncrun started 2018-07-21T08:11:06Z
+#=#=#=#=# Propagation starts 2018-07-21T08:11:10Z (last step: 3444 msec, total: 3444 msec)
+08:11:13||pages/monitoring.php|INST_SYNC|Up|1532160664|e6dac5518f69da63796ba7d70e185d96|7654|1189742350d2d97dd6515|4||204|7688|1532160650||||
+#=#=#=# Syncrun finished 2018-07-21T08:11:13Z (last step: 3011 msec, total: 6456 msec)
+#=#=#=# Syncrun started 2018-07-21T08:11:56Z
+#=#=#=#=# Propagation starts 2018-07-21T08:12:00Z (last step: 4210 msec, total: 4210 msec)
+#=#=#=# Syncrun finished 2018-07-21T08:12:00Z (last step: 375 msec, total: 4585 msec)
+#=#=#=# Syncrun started 2018-07-21T08:46:29Z
+#=#=#=#=# Propagation starts 2018-07-21T08:46:30Z (last step: 1063 msec, total: 1063 msec)
+08:46:33||template.php|INST_SYNC|Up|1532162787|13ecc73b18eec63299034dd0537891c0|1448|1201271150d2d97dd6515|4||204|1094|1532160619||||
+#=#=#=# Syncrun finished 2018-07-21T08:46:33Z (last step: 2484 msec, total: 3547 msec)
+#=#=#=# Syncrun started 2018-07-21T08:47:24Z
+#=#=#=#=# Propagation starts 2018-07-21T08:47:25Z (last step: 1314 msec, total: 1314 msec)
+#=#=#=# Syncrun finished 2018-07-21T08:47:26Z (last step: 123 msec, total: 1437 msec)
+#=#=#=# Syncrun started 2018-07-21T08:47:35Z
+#=#=#=#=# Propagation starts 2018-07-21T08:47:37Z (last step: 1791 msec, total: 1791 msec)
+08:47:42||template.php|INST_SYNC|Up|1532162853|e864905367d5beb0703f485304285232|1472|1201271150d2d97dd6515|4||204|1448|1532162787||||
+#=#=#=# Syncrun finished 2018-07-21T08:47:41Z (last step: 4312 msec, total: 6103 msec)
+#=#=#=# Syncrun started 2018-07-21T08:48:23Z
+#=#=#=#=# Propagation starts 2018-07-21T08:48:25Z (last step: 1249 msec, total: 1249 msec)
+#=#=#=# Syncrun finished 2018-07-21T08:48:25Z (last step: 176 msec, total: 1425 msec)
+#=#=#=# Syncrun started 2018-07-21T08:49:05Z
+#=#=#=#=# Propagation starts 2018-07-21T08:49:08Z (last step: 2681 msec, total: 2681 msec)
+08:49:11||template.php|INST_SYNC|Up|1532162943|f9d484e8bf875545a283d7db15639bea|1513|1201271150d2d97dd6515|4||204|1472|1532162853||||
+#=#=#=# Syncrun finished 2018-07-21T08:49:11Z (last step: 3006 msec, total: 5687 msec)
+#=#=#=# Syncrun started 2018-07-21T08:49:53Z
+#=#=#=#=# Propagation starts 2018-07-21T08:49:54Z (last step: 1338 msec, total: 1338 msec)
+#=#=#=# Syncrun finished 2018-07-21T08:49:55Z (last step: 123 msec, total: 1462 msec)
+#=#=#=# Syncrun started 2018-07-21T08:50:22Z
+#=#=#=#=# Propagation starts 2018-07-21T08:50:24Z (last step: 1665 msec, total: 1665 msec)
+08:50:29||template.php|INST_SYNC|Up|1532163020|cf6616b08136e550ced2e703e6555593|1513|1201271150d2d97dd6515|4||204|1513|1532162943||||
+#=#=#=# Syncrun finished 2018-07-21T08:50:28Z (last step: 4500 msec, total: 6166 msec)
+#=#=#=# Syncrun started 2018-07-21T08:51:03Z
+#=#=#=#=# Propagation starts 2018-07-21T08:51:05Z (last step: 1773 msec, total: 1773 msec)
+08:51:09||template.php|INST_SYNC|Up|1532163058|1284905977b8b37c602c9bd3f991aa7e|1503|1201271150d2d97dd6515|4||204|1513|1532163020||||
+#=#=#=# Syncrun finished 2018-07-21T08:51:09Z (last step: 3422 msec, total: 5195 msec)
+#=#=#=# Syncrun started 2018-07-21T08:51:35Z
+#=#=#=#=# Propagation starts 2018-07-21T08:51:36Z (last step: 1016 msec, total: 1016 msec)
+08:51:39||template.php|INST_SYNC|Up|1532163093|9d3e2ee8b336d70bbaf38e6fd34f69e8|1513|1201271150d2d97dd6515|4||204|1503|1532163058||||
+#=#=#=# Syncrun finished 2018-07-21T08:51:38Z (last step: 2216 msec, total: 3232 msec)
+#=#=#=# Syncrun started 2018-07-21T08:52:24Z
+#=#=#=#=# Propagation starts 2018-07-21T08:52:27Z (last step: 2869 msec, total: 2869 msec)
+#=#=#=# Syncrun finished 2018-07-21T08:52:27Z (last step: 120 msec, total: 2990 msec)
+#=#=#=# Syncrun started 2018-07-21T08:52:30Z
+#=#=#=#=# Propagation starts 2018-07-21T08:52:31Z (last step: 977 msec, total: 977 msec)
+08:52:35||template.php|INST_SYNC|Up|1532163148|a5196a9dfd5e2f649924f1187cf12d36|1508|1201271150d2d97dd6515|4||204|1513|1532163093||||
+#=#=#=# Syncrun finished 2018-07-21T08:52:34Z (last step: 3055 msec, total: 4032 msec)
+#=#=#=# Syncrun started 2018-07-21T08:53:23Z
+#=#=#=#=# Propagation starts 2018-07-21T08:53:25Z (last step: 1142 msec, total: 1142 msec)
+#=#=#=# Syncrun finished 2018-07-21T08:53:25Z (last step: 140 msec, total: 1282 msec)
+#=#=#=# Syncrun started 2018-07-21T08:53:55Z
+#=#=#=#=# Propagation starts 2018-07-21T08:53:57Z (last step: 1505 msec, total: 1505 msec)
+08:53:59||template.php|INST_SYNC|Up|1532163233|5e3419be929785716a0f7d4965385a96|1558|1201271150d2d97dd6515|4||204|1508|1532163148||||
+#=#=#=# Syncrun finished 2018-07-21T08:53:59Z (last step: 1929 msec, total: 3434 msec)
+#=#=#=# Syncrun started 2018-07-21T08:54:20Z
+#=#=#=#=# Propagation starts 2018-07-21T08:54:22Z (last step: 1326 msec, total: 1326 msec)
+08:54:24||template.php|INST_SYNC|Up|1532163258|38f5c039ca29c6eb8d92a4fe4147d898|1553|1201271150d2d97dd6515|4||204|1558|1532163233||||
+#=#=#=# Syncrun finished 2018-07-21T08:54:23Z (last step: 1519 msec, total: 2846 msec)
+#=#=#=# Syncrun started 2018-07-21T08:55:09Z
+#=#=#=#=# Propagation starts 2018-07-21T08:55:11Z (last step: 1412 msec, total: 1412 msec)
+08:55:13||template.php|INST_SYNC|Up|1532163307|205b6c4c89b81c61a6cecd4350d02ad2|1553|1201271150d2d97dd6515|4||204|1553|1532163258||||
+#=#=#=# Syncrun finished 2018-07-21T08:55:13Z (last step: 1669 msec, total: 3082 msec)
+#=#=#=# Syncrun started 2018-07-21T08:55:21Z
+#=#=#=#=# Propagation starts 2018-07-21T08:55:22Z (last step: 989 msec, total: 989 msec)
+08:55:24||template.php|INST_SYNC|Up|1532163318|acd29325e5ea74eaaca8798da55cf8ff|1310|1201271150d2d97dd6515|4||204|1553|1532163307||||
+#=#=#=# Syncrun finished 2018-07-21T08:55:24Z (last step: 2276 msec, total: 3265 msec)
+#=#=#=# Syncrun started 2018-07-21T08:55:39Z
+#=#=#=#=# Propagation starts 2018-07-21T08:55:41Z (last step: 1730 msec, total: 1730 msec)
+08:55:45||template.php|INST_SYNC|Up|1532163334|de10550ba6306bef76197722aa4d1f72|1315|1201271150d2d97dd6515|4||204|1310|1532163318||||
+#=#=#=# Syncrun finished 2018-07-21T08:55:45Z (last step: 3965 msec, total: 5696 msec)
+#=#=#=# Syncrun started 2018-07-21T08:56:23Z
+#=#=#=#=# Propagation starts 2018-07-21T08:56:24Z (last step: 1241 msec, total: 1241 msec)
+#=#=#=# Syncrun finished 2018-07-21T08:56:24Z (last step: 207 msec, total: 1449 msec)
+#=#=#=# Syncrun started 2018-07-21T08:57:19Z
+#=#=#=#=# Propagation starts 2018-07-21T08:57:21Z (last step: 1672 msec, total: 1672 msec)
+08:57:23||template.php|INST_SYNC|Up|1532163437|b06fb875d9a69dc9cb1d3a2878dc2eee|1510|1201271150d2d97dd6515|4||204|1315|1532163334||||
+#=#=#=# Syncrun finished 2018-07-21T08:57:22Z (last step: 1596 msec, total: 3268 msec)
+#=#=#=# Syncrun started 2018-07-21T08:58:24Z
+#=#=#=#=# Propagation starts 2018-07-21T08:58:26Z (last step: 1823 msec, total: 1823 msec)
+#=#=#=# Syncrun finished 2018-07-21T08:58:26Z (last step: 138 msec, total: 1962 msec)
+#=#=#=# Syncrun started 2018-07-21T09:01:25Z
+#=#=#=#=# Propagation starts 2018-07-21T09:01:28Z (last step: 2213 msec, total: 2213 msec)
+09:01:31||template.php|INST_SYNC|Up|1532163683|54022e6d28b1a89f5aba94c8f5e9ee53|1556|1201271150d2d97dd6515|4||204|1510|1532163437||||
+#=#=#=# Syncrun finished 2018-07-21T09:01:31Z (last step: 3280 msec, total: 5493 msec)
+#=#=#=# Syncrun started 2018-07-21T09:02:23Z
+#=#=#=#=# Propagation starts 2018-07-21T09:02:24Z (last step: 1421 msec, total: 1421 msec)
+#=#=#=# Syncrun finished 2018-07-21T09:02:25Z (last step: 148 msec, total: 1569 msec)
+#=#=#=# Syncrun started 2018-07-21T09:06:02Z
+#=#=#=#=# Propagation starts 2018-07-21T09:06:03Z (last step: 1349 msec, total: 1349 msec)
+09:06:06||template.php|INST_SYNC|Up|1532163959|b7aa8006fabb061f1393b4c43956bc1a|1810|1201271150d2d97dd6515|4||204|1556|1532163683||||
+#=#=#=# Syncrun finished 2018-07-21T09:06:06Z (last step: 3074 msec, total: 4424 msec)
+#=#=#=# Syncrun started 2018-07-21T09:06:12Z
+#=#=#=#=# Propagation starts 2018-07-21T09:06:14Z (last step: 1987 msec, total: 1987 msec)
+09:06:16||template.php|INST_SYNC|Up|1532163970|dbb9eaec09d810a3a6e2f71632b67a5b|1816|1201271150d2d97dd6515|4||204|1810|1532163959||||
+#=#=#=# Syncrun finished 2018-07-21T09:06:16Z (last step: 2261 msec, total: 4249 msec)
+#=#=#=# Syncrun started 2018-07-21T09:06:53Z
+#=#=#=#=# Propagation starts 2018-07-21T09:06:55Z (last step: 1731 msec, total: 1731 msec)
+#=#=#=# Syncrun finished 2018-07-21T09:06:55Z (last step: 108 msec, total: 1840 msec)
+#=#=#=# Syncrun started 2018-07-21T09:07:01Z
+#=#=#=#=# Propagation starts 2018-07-21T09:07:02Z (last step: 944 msec, total: 944 msec)
+09:07:05||template.php|INST_SYNC|Up|1532164019|41e4819606d90f3d4d46cb6a8d436caf|1812|1201271150d2d97dd6515|4||204|1816|1532163970||||
+#=#=#=# Syncrun finished 2018-07-21T09:07:05Z (last step: 2767 msec, total: 3711 msec)
+#=#=#=# Syncrun started 2018-07-21T09:07:17Z
+#=#=#=#=# Propagation starts 2018-07-21T09:07:18Z (last step: 1822 msec, total: 1822 msec)
+09:07:23||template.php|INST_SYNC|Up|1532164035|9b0c2160dfe3bc36d34f58cd32754c03|1685|1201271150d2d97dd6515|4||204|1812|1532164019||||
+#=#=#=# Syncrun finished 2018-07-21T09:07:22Z (last step: 3568 msec, total: 5390 msec)
+#=#=#=# Syncrun started 2018-07-21T09:07:53Z
+#=#=#=#=# Propagation starts 2018-07-21T09:07:55Z (last step: 1708 msec, total: 1708 msec)
+#=#=#=# Syncrun finished 2018-07-21T09:07:55Z (last step: 299 msec, total: 2008 msec)
+#=#=#=# Syncrun started 2018-07-21T09:08:17Z
+#=#=#=#=# Propagation starts 2018-07-21T09:08:18Z (last step: 1249 msec, total: 1249 msec)
+09:08:21||pages/monitoring.php|INST_SYNC|Up|1532164095|aa8fcf0ee81a831514be6c8e37894e24|7673|1189742350d2d97dd6515|4||204|7654|1532160664||||
+#=#=#=# Syncrun finished 2018-07-21T09:08:20Z (last step: 2571 msec, total: 3821 msec)
+#=#=#=# Syncrun started 2018-07-21T09:08:53Z
+#=#=#=#=# Propagation starts 2018-07-21T09:08:56Z (last step: 2140 msec, total: 2140 msec)
+#=#=#=# Syncrun finished 2018-07-21T09:08:56Z (last step: 169 msec, total: 2310 msec)
+#=#=#=# Syncrun started 2018-07-21T09:10:02Z
+#=#=#=#=# Propagation starts 2018-07-21T09:10:04Z (last step: 1348 msec, total: 1348 msec)
+09:10:07||template.php|INST_SYNC|Up|1532164200|f24fdad0b3a4e2e0703ee6185c5e4da7|1816|1201271150d2d97dd6515|4||204|1685|1532164035||||
+#=#=#=# Syncrun finished 2018-07-21T09:10:06Z (last step: 2556 msec, total: 3905 msec)
+#=#=#=# Syncrun started 2018-07-21T09:10:35Z
+#=#=#=#=# Propagation starts 2018-07-21T09:10:37Z (last step: 1745 msec, total: 1745 msec)
+09:10:40||template.php|INST_SYNC|Up|1532164225|b01f8ecae0c61de42b2621653a0d2293|1832|1201271150d2d97dd6515|4||204|1816|1532164200||||
+#=#=#=# Syncrun finished 2018-07-21T09:10:39Z (last step: 2682 msec, total: 4427 msec)
+#=#=#=# Syncrun started 2018-07-21T09:11:21Z
+#=#=#=#=# Propagation starts 2018-07-21T09:11:22Z (last step: 1323 msec, total: 1323 msec)
+09:11:26||template.php|INST_SYNC|Up|1532164279|fa422b0668de0db3f0dc614af8a06004|1840|1201271150d2d97dd6515|4||204|1832|1532164225||||
+#=#=#=# Syncrun finished 2018-07-21T09:11:25Z (last step: 3382 msec, total: 4706 msec)
+#=#=#=# Syncrun started 2018-07-21T09:12:25Z
+#=#=#=#=# Propagation starts 2018-07-21T09:12:27Z (last step: 1942 msec, total: 1942 msec)
+#=#=#=# Syncrun finished 2018-07-21T09:12:27Z (last step: 193 msec, total: 2135 msec)
+#=#=#=# Syncrun started 2018-07-21T09:12:51Z
+#=#=#=#=# Propagation starts 2018-07-21T09:12:52Z (last step: 1396 msec, total: 1396 msec)
+09:12:56||template.php|INST_SYNC|Up|1532164369|baae2049a8ff57d70492ac80d2e25fb9|1870|1201271150d2d97dd6515|4||204|1840|1532164279||||
+#=#=#=# Syncrun finished 2018-07-21T09:12:56Z (last step: 3521 msec, total: 4918 msec)
+#=#=#=# Syncrun started 2018-07-21T09:12:59Z
+#=#=#=#=# Propagation starts 2018-07-21T09:13:01Z (last step: 1119 msec, total: 1119 msec)
+09:13:05||template.php|INST_SYNC|Up|1532164375|5b6da690c55b41f4a185e65ac1d1f904|1871|1201271150d2d97dd6515|4||204|1870|1532164369||||
+#=#=#=# Syncrun finished 2018-07-21T09:13:04Z (last step: 3604 msec, total: 4724 msec)
+#=#=#=# Syncrun started 2018-07-21T09:13:54Z
+#=#=#=#=# Propagation starts 2018-07-21T09:13:55Z (last step: 1224 msec, total: 1224 msec)
+#=#=#=# Syncrun finished 2018-07-21T09:13:55Z (last step: 199 msec, total: 1424 msec)
+#=#=#=# Syncrun started 2018-07-21T09:14:13Z
+#=#=#=#=# Propagation starts 2018-07-21T09:14:14Z (last step: 1385 msec, total: 1385 msec)
+09:14:17||template.php|INST_SYNC|Up|1532164451|922b789213ff5daab3b3fb95753682d1|1869|1201271150d2d97dd6515|4||204|1871|1532164375||||
+#=#=#=# Syncrun finished 2018-07-21T09:14:16Z (last step: 2229 msec, total: 3615 msec)
+#=#=#=# Syncrun started 2018-07-21T09:14:37Z
+#=#=#=#=# Propagation starts 2018-07-21T09:14:39Z (last step: 1607 msec, total: 1607 msec)
+09:14:45||template.php|INST_SYNC|Up|1532164475|ca621da1b6579b36ef27ed7d55324268|1872|1201271150d2d97dd6515|4||204|1869|1532164451||||
+#=#=#=# Syncrun finished 2018-07-21T09:14:45Z (last step: 6095 msec, total: 7702 msec)
+#=#=#=# Syncrun started 2018-07-21T09:14:56Z
+#=#=#=#=# Propagation starts 2018-07-21T09:14:58Z (last step: 1331 msec, total: 1331 msec)
+09:15:08||template.php|INST_SYNC|Up|1532164494|26ad9fab0c917fbd6fa3580bde9cb910|1873|1201271150d2d97dd6515|4||204|1872|1532164475||||
+#=#=#=# Syncrun finished 2018-07-21T09:15:08Z (last step: 10546 msec, total: 11877 msec)
+#=#=#=# Syncrun started 2018-07-21T09:15:59Z
+#=#=#=#=# Propagation starts 2018-07-21T09:16:04Z (last step: 4906 msec, total: 4906 msec)
+09:16:09||template.php|INST_SYNC|Up|1532164554|5d824eae158178f760d06919b27ea073|1871|1201271150d2d97dd6515|4||204|1873|1532164494||||
+#=#=#=# Syncrun finished 2018-07-21T09:16:09Z (last step: 4857 msec, total: 9764 msec)
+#=#=#=# Syncrun started 2018-07-21T09:16:42Z
+#=#=#=#=# Propagation starts 2018-07-21T09:16:44Z (last step: 2086 msec, total: 2086 msec)
+09:16:51||template.php|INST_SYNC|Up|1532164588|f1d2bbed025d721b1cb0ae6f399f39da|1872|1201271150d2d97dd6515|4||204|1871|1532164554||||
+#=#=#=# Syncrun finished 2018-07-21T09:16:51Z (last step: 6291 msec, total: 8377 msec)
+#=#=#=# Syncrun started 2018-07-21T09:17:43Z
+#=#=#=#=# Propagation starts 2018-07-21T09:17:47Z (last step: 3645 msec, total: 3645 msec)
+||template.php|INST_SYNC|Up|1532164666|f1d2bbed025d721b1cb0ae6f399f39da|1876|1201271150d2d97dd6515|3|Local file changed during sync.|0|1872|1532164588||||
+#=#=#=# Syncrun finished 2018-07-21T09:17:47Z (last step: 54 msec, total: 3699 msec)
+#=#=#=# Syncrun started 2018-07-21T09:17:50Z
+#=#=#=#=# Propagation starts 2018-07-21T09:17:53Z (last step: 3361 msec, total: 3361 msec)
+09:17:59||template.php|INST_SYNC|Up|1532164666|a6ce4a0f3dcdce805cbfc5dc5eed0f07|1876|1201271150d2d97dd6515|4||204|1872|1532164588||||
+#=#=#=# Syncrun finished 2018-07-21T09:17:58Z (last step: 5164 msec, total: 8525 msec)
+#=#=#=# Syncrun started 2018-07-21T09:18:54Z
+#=#=#=#=# Propagation starts 2018-07-21T09:18:55Z (last step: 1569 msec, total: 1569 msec)
+#=#=#=# Syncrun finished 2018-07-21T09:18:55Z (last step: 140 msec, total: 1710 msec)
+#=#=#=# Syncrun started 2018-07-21T09:19:38Z
+#=#=#=#=# Propagation starts 2018-07-21T09:19:40Z (last step: 2230 msec, total: 2230 msec)
+09:19:44||template.php|INST_SYNC|Up|1532164776|2f4150004f0ebe91185a76ca6040fbf2|1886|1201271150d2d97dd6515|4||204|1876|1532164666||||
+#=#=#=# Syncrun finished 2018-07-21T09:19:43Z (last step: 3200 msec, total: 5431 msec)
+#=#=#=# Syncrun started 2018-07-21T09:19:47Z
+#=#=#=#=# Propagation starts 2018-07-21T09:19:49Z (last step: 2020 msec, total: 2020 msec)
+09:19:53||template.php|INST_SYNC|Up|1532164783|e6ecba27adafb18ce09acb70883b1fe0|1893|1201271150d2d97dd6515|4||204|1886|1532164776||||
+#=#=#=# Syncrun finished 2018-07-21T09:19:52Z (last step: 3354 msec, total: 5375 msec)
+#=#=#=# Syncrun started 2018-07-21T09:20:40Z
+#=#=#=#=# Propagation starts 2018-07-21T09:20:42Z (last step: 1682 msec, total: 1682 msec)
+09:20:46||template.php|INST_SYNC|Up|1532164838|5c5ff6165a3da8e4af2c4c5258dc2743|1893|1201271150d2d97dd6515|4||204|1893|1532164783||||
+#=#=#=# Syncrun finished 2018-07-21T09:20:45Z (last step: 3496 msec, total: 5179 msec)
+#=#=#=# Syncrun started 2018-07-21T09:21:24Z
+#=#=#=#=# Propagation starts 2018-07-21T09:21:26Z (last step: 1338 msec, total: 1338 msec)
+#=#=#=# Syncrun finished 2018-07-21T09:21:26Z (last step: 94 msec, total: 1433 msec)
+#=#=#=# Syncrun started 2018-07-21T09:21:56Z
+#=#=#=#=# Propagation starts 2018-07-21T09:22:04Z (last step: 7521 msec, total: 7521 msec)
+09:22:08||template.php|INST_SYNC|Up|1532164914|2dcbcf24bb0af109fd8024294115b441|1891|1201271150d2d97dd6515|4||204|1893|1532164838||||
+#=#=#=# Syncrun finished 2018-07-21T09:22:08Z (last step: 4208 msec, total: 11729 msec)
+#=#=#=# Syncrun started 2018-07-21T09:22:54Z
+#=#=#=#=# Propagation starts 2018-07-21T09:22:59Z (last step: 5299 msec, total: 5299 msec)
+#=#=#=# Syncrun finished 2018-07-21T09:22:59Z (last step: 131 msec, total: 5431 msec)
+#=#=#=# Syncrun started 2018-07-21T09:28:06Z
+#=#=#=#=# Propagation starts 2018-07-21T09:28:07Z (last step: 1381 msec, total: 1381 msec)
+09:28:10||pages/main.php|INST_SYNC|Up|1532165284|1b326c2c952604d1649e1aa4957b47f5|5491|1201070950d2d97dd6515|4||204|5677|1532141324||||
+#=#=#=# Syncrun finished 2018-07-21T09:28:10Z (last step: 2631 msec, total: 4013 msec)
+#=#=#=# Syncrun started 2018-07-21T09:28:37Z
+#=#=#=#=# Propagation starts 2018-07-21T09:28:40Z (last step: 3158 msec, total: 3158 msec)
+09:28:45||pages/main.php|INST_SYNC|Up|1532165311|cad709393ce441b56fc57f7c77bb971b|5677|1201070950d2d97dd6515|4||204|5491|1532165284||||
+#=#=#=# Syncrun finished 2018-07-21T09:28:45Z (last step: 4168 msec, total: 7326 msec)
+#=#=#=# Syncrun started 2018-07-21T09:29:37Z
+#=#=#=#=# Propagation starts 2018-07-21T09:29:40Z (last step: 3400 msec, total: 3400 msec)
+#=#=#=# Syncrun finished 2018-07-21T09:29:40Z (last step: 149 msec, total: 3549 msec)
+#=#=#=# Syncrun started 2018-07-21T09:31:16Z
+#=#=#=#=# Propagation starts 2018-07-21T09:31:18Z (last step: 1746 msec, total: 1746 msec)
+09:31:21||assets/bootstrap-wysihtml5 -> assets/chosen-bootstrap/bootstrap-wysihtml5|INST_RENAME|Up|1530234079|5b3584e11f7c6|0|1177046350d2d97dd6515|4||201|0|0||||
+||assets/chosen-bootstrap/bootstrap-wysihtml5/bootstrap-wysihtml5.css -> assets/chosen-bootstrap/bootstrap-wysihtml5/bootstrap-wysihtml5.css|INST_RENAME|Up|1361825066|7ab34e1926b8b2b936e0a4a52da9da64|2434|1177047050d2d97dd6515|4||0|2434|1361825066||||
+||assets/chosen-bootstrap/bootstrap-wysihtml5/bootstrap-wysihtml5.js -> assets/chosen-bootstrap/bootstrap-wysihtml5/bootstrap-wysihtml5.js|INST_RENAME|Up|1373640748|03225cdfb8d742e01dd72065d2aadac0|21103|1177047750d2d97dd6515|4||0|21103|1373640748||||
+||assets/chosen-bootstrap/bootstrap-wysihtml5/wysihtml5-0.3.0.js -> assets/chosen-bootstrap/bootstrap-wysihtml5/wysihtml5-0.3.0.js|INST_RENAME|Up|1361825070|4eb2a6d6d2f1c109575c55439fbcce61|341634|1177048050d2d97dd6515|4||0|341634|1361825070||||
+#=#=#=# Syncrun finished 2018-07-21T09:31:21Z (last step: 2462 msec, total: 4209 msec)
+#=#=#=# Syncrun started 2018-07-21T09:31:53Z
+#=#=#=#=# Propagation starts 2018-07-21T09:31:59Z (last step: 5418 msec, total: 5418 msec)
+#=#=#=# Syncrun finished 2018-07-21T09:31:59Z (last step: 192 msec, total: 5611 msec)

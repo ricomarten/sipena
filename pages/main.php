@@ -37,7 +37,7 @@
 			$sql=mysql_query("SELECT kal.*,k.nama FROM `kalender_kegiatan` kal left join kegiatan k on k.id=kal.id_kegiatan ");
 			while($data=mysql_fetch_array($sql)){
 				echo " {";
-				echo "title: '".$data['nama']."',";
+				echo "title: '".str_replace("Pengolahan","",$data['nama'])."',";
 				echo "start: '".$data['tanggal']."',";
 				//echo "end: '".$data['jadwal_selesai']."'";
 				echo "},";

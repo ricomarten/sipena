@@ -40,7 +40,7 @@
 					$akhir = strtotime($data['jadwal_selesai']);
 					$datediff = $akhir - $awal;
 					echo '<div class="span4"><div class="well">';
-					echo '<center><canvas id="canvas-preview'.$i.'"></canvas><div id="preview-textfield'.$i.'"></div></center>';
+					echo '<center><canvas id="canvas-preview'.$i.'" style="width:100%;"></canvas><div id="preview-textfield'.$i.'"></div></center>';
 					echo "<h4>".$data['nama']."</h4>";
 					echo "<p>Jadwal: ".tanggal($data['jadwal_awal'])." s.d. ".tanggal($data['jadwal_selesai'])." (".(round($datediff / (60 * 60 * 24))+1)." hari)<br>";
 					echo "Prediksi: ".$data['prediksi'].".</p>";
