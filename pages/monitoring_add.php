@@ -4,25 +4,33 @@ include ("../koneksinya.php"); // Connection to database
 //$acceptedExtension = Array('image/jpeg', 'image/jpg'); // Accepted extensions
 $maxSize = 2048000;
 $destFolder = '../upload/'; // We upload the image here
-
-$imgType = $_FILES["kesepakatan"]["type"];
-$imgSize = $_FILES["kesepakatan"]["size"];
-$imgName = $_FILES["kesepakatan"]["name"];
-$imgTmpName = $_FILES["kesepakatan"]["tmp_name"];
+$kesepakatan="kesepakatan".$_POST['kegId'];
+$imgType = $_FILES[$kesepakatan]["type"];
+$imgSize = $_FILES[$kesepakatan]["size"];
+$imgName = $_FILES[$kesepakatan]["name"];
+$imgTmpName = $_FILES[$kesepakatan]["tmp_name"];
 //list($txt, $ext) = explode("image/", $imgType); // Get image extension
  
 if ($imgSize <= $maxSize && $imgSize != "") { // Test is extension allowed and image size ok
- 
+	$explode	= explode('.',$imgName);
+	$extensi	= $explode[count($explode)-1];
 	//$newThumbImageName = 'profile-'.$_POST['userId'].'.'.$ext; // We rename the image (in our example it will be profile-1.jpeg)
- 
-	if(move_uploaded_file($imgTmpName,$destFolder.$imgName)) { // Upload image
+	
+	$sql=mysql_query("select nama,dokumen from kegiatan where id='".$_POST['kegId']."'");
+	$data=mysql_fetch_array($sql);
+	$namadok=$data['nama'].".".$extensi;
+	if($data['dokumen']!=""){
+		unlink($destFolder.$data['dokumen']);
+	}
+	if(move_uploaded_file($imgTmpName,$destFolder.$namadok)) { // Upload image
 		
-		mysql_query('UPDATE kegiatan SET dokumen = "'.$imgName.'" WHERE id='.$_POST['kegId']); // Update database
+		mysql_query('UPDATE kegiatan SET dokumen = "'.$namadok.'" WHERE id='.$_POST['kegId']); // Update database
  
-		$text = '<p class="myImage"><a href="upload/'.$imgName.'">'.$imgName.'</a></p>'; // Send back the image...
+		$text = '<p class="myImage"><a href="upload/'.$namadok.'">'.$namadok.'</a></p>'; // Send back the image...
 		$text .= '<div class="alert alert-success" role="alert">Berhasil upload dokumen.</div>'; //...and a successfull text
+		$text .= "Approve: <button class='btn btn-circle btn-success'><i class='icon-ok'></i></button><br>"; //...and a successfull text
 		
-		$dataBack = array('text' => $text, 'imgURL' => 'upload/'.$imgName); // Also send back the image URL
+		$dataBack = array('text' => $text, 'imgURL' => 'upload/'.$namadok); // Also send back the image URL
 	}
  
 } else {

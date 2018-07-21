@@ -14,12 +14,24 @@
 	}
 	
 	@media screen and (max-width: 900px) and (min-width: 550px) {
+		.priority-7{
+			display:none;
+		}
+		.priority-6{
+			display:none;
+		}
 		.priority-5{
 			display:none;
 		}
 	}
 	
 	@media screen and (max-width: 550px) {
+		.priority-7{
+			display:none;
+		}
+		.priority-6{
+			display:none;
+		}
 		.priority-5{
 			display:none;
 		}
@@ -29,6 +41,12 @@
 	}
 	
 	@media screen and (max-width: 300px) {
+		.priority-7{
+			display:none;
+		}
+		.priority-6{
+			display:none;
+		}
 		.priority-5{
 			display:none;
 		}
@@ -36,9 +54,6 @@
 			display:none;
 		}
 		.priority-3{
-			display:none;
-		}
-		.priority-2{
 			display:none;
 		}
 	
@@ -62,7 +77,7 @@
 			<a href="index.php">Home</a>
 			<span class="divider"><i class="icon-angle-right"></i></span>
 		</li>
-		<i class="icon-bar-chart"></i><li class="active">Perencanaan Pengolahan Data</li>
+		<i class="icon-bar-chart"></i><li class="active">Monitoring Perencanaan</li>
 	</ul>
 </div>
 <!-- END Breadcrumb -->
@@ -71,7 +86,7 @@
 	<div class="span12">
 		<div class="box">
 			<div class="box-title">
-				<h3><i class="icon-bar-chart"></i> Daftar Perencanaan Pengolahan Data</h3>
+				<h3><i class="icon-bar-chart"></i> Monitoring Perencanaan</h3>
 				<div class="box-tool">
 					<a data-action="collapse" href="#"><i class="icon-chevron-up"></i></a>
 				</div>
@@ -85,13 +100,13 @@
 				 <table class="table table-advance tutorial-table" id="table1">
 					<thead>
 						<tr>
-							<th class="priority-1">No</th>
-							<th class="priority-2">Nama Kegiatan</th>
+							<th class="priority-3">No</th>
+							<th class="priority-1">Nama Kegiatan</th>
 							<th class="priority-5">Jadwal</th>
-							<th class="priority-4">Rencana Pengerjaan</th>
-							<th class="priority-3">Keterangan</th>
-							<th class="priority-4">Rekomendasi</th>
-							<th class="priority-1">Dokumen Kesepakatan</th>
+							<th class="priority-6">Rencana Pengerjaan</th>
+							<th class="priority-4">Keterangan</th>
+							<th class="priority-7">Rekomendasi</th>
+							<th class="priority-2">Dokumen Kesepakatan</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -105,28 +120,31 @@
 						//echo round($datediff / (60 * 60 * 24));
 						
 						echo "<tr>";
-						echo "<td class='priority-1'>".$i."</td>";
-						echo "<td class='priority-2'>".$data['nama']."</td>";
+						echo "<td class='priority-3'>".$i."</td>";
+						echo "<td class='priority-1'>".$data['nama']."</td>";
 						echo "<td class='priority-5'>".bulan(tanggal($data['jadwal_awal']))." s.d. ".bulan(tanggal($data['jadwal_selesai']))." (".(round($datediff / (60 * 60 * 24))+1)." hari)</td>";
-						echo "<td class='priority-4'>".$data['hari_kerja']." hari <ul>";
+						echo "<td class='priority-6'>".$data['hari_kerja']." hari <ul>";
 						$kal_keg=mysql_query("select * from kalender_kegiatan where id_kegiatan='".$data['id']."' order by tanggal asc");
 						while($data_kal=mysql_fetch_array($kal_keg)){
 							echo "<li>".bulan(tanggal($data_kal['tanggal']))."</li>";
 						}
 						echo "</ul></td>";
-						echo "<td class='priority-3'>".$data['prediksi']."</td>";
-						echo "<td class='priority-4' width='15%'>".$data['rekomendasi']."</td>";	
-						echo "<td>";
-						echo "Template: <a class='btn btn-circle btn-success'><i class='icon-ok'></i></a><br>";
-						echo "Approve: <button class='btn btn-circle btn-success'><i class='icon-ok'></i></button><br>";
-						echo "Approve: <button class='btn btn-circle btn-danger'><i class='icon-remove'></i></button><br>";
+						echo "<td class='priority-4'>".$data['prediksi']."</td>";
+						echo "<td class='priority-7'>".$data['rekomendasi']."</td>";	
+						echo "<td class='priority-2'>";
+						echo "Template: <a href='upload/Kesepakatan_Perencanaan_Pengolahan.docx' target='_blank' class='btn'><i class='icon-download-alt'></i></a><br>";
+						
 						echo "<form method='post' enctype='multipart/form-data' id='kesepakatanForm".$data['id']."' action=''>";
 						echo "<div><b>Upload dokumen: </b></div><div><input name='kesepakatan".$data['id']."' id='kesepakatan".$data['id']."' type='file' />";
-						echo "<input name='kegId".$data['id']."' type='hidden' value='".$data['id']."' /></div></form>";
+						echo "<input name='kegId' type='hidden' value='".$data['id']."' /></div></form>";
 						echo "<div id='hasilDokumen".$data['id']."'>";
 						if (isset($data['dokumen']) && $data['dokumen'] != "") { // Test if image exists
 							echo "<p class='myImage".$data['id']."'><a href='upload/".$data['dokumen']."'>".$data['dokumen']."</a></p>"; // If image exists we display the image
-						}
+							echo "Approve: <button class='btn btn-circle btn-success'><i class='icon-ok'></i></button><br>";
+						
+						}else{
+							echo "Approve: <button class='btn btn-circle btn-danger'><i class='icon-remove'></i></button><br>";
+						}						
 						echo "</div>";
 						
 						//echo "<input id='default_file' type='file' name='kesepakatan'/>";
@@ -158,7 +176,7 @@ while($data=mysql_fetch_array($sql)){
 	echo "\nsuccess: function(data){";
 	echo "\n$('#hasilDokumen".$data['id']."').html(data.text);"; 
 	echo "\n$(\".myImage".$data['id']."\").load(function() { ";
-	echo "\n$(\".myImage".$data['id']."\").attr( 'a', data.imgURL );";
+	echo "\n$(\".myImage".$data['id']."\").attr( data.imgURL );";
 	echo "\n});"; 
 	echo "\n}";
 	echo "\n}).submit();";
