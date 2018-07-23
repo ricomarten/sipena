@@ -133,7 +133,7 @@
 						echo "<td class='priority-7'>".$data['rekomendasi']."</td>";	
 						echo "<td class='priority-2'>";
 						//echo "Template: <a href='upload/Kesepakatan_Perencanaan_Pengolahan.docx' target='_blank' class='btn'><i class='icon-download-alt'></i></a><br>";
-						echo "Template: <a href='template.php?id=".$data['id']."' target='_blank' class='btn'><i class='icon-download-alt'></i></a><br>";
+						echo "Download Kesepakatan: <a href='template.php?id=".$data['id']."' target='_blank' class='btn'><i class='icon-download-alt'></i></a><br>";
 						
 						echo "<form method='post' enctype='multipart/form-data' id='kesepakatanForm".$data['id']."' action=''>";
 						echo "<div><b>Upload dokumen: </b></div><div><input name='kesepakatan".$data['id']."' id='kesepakatan".$data['id']."' type='file' />";
