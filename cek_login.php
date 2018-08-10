@@ -3,9 +3,9 @@
 	include "koneksinya.php";	
 	include "plugins/AES/function.php";
 	if(isset($_POST['username']) && isset($_POST['password'] )){
-		$sql_cari=mysql_query("select * from user where username='".$_POST['username']."' and password='".$_POST['password']."'");
-		$cari=mysql_num_rows($sql_cari);
-		$data=mysql_fetch_array($sql_cari);
+		$sql_cari=mysqli_query($conn, "select * from user where username='".$_POST['username']."' and password='".$_POST['password']."'");
+		$cari=mysqli_num_rows($sql_cari);
+		$data=mysqli_fetch_array($sql_cari);
 		if($cari>=1){
 			/* echo'<div class="alert alert-success">
 				<button class="close" data-dismiss="alert">&times;</button>

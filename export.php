@@ -7,7 +7,7 @@ if($_GET['page']=='mitigasi'){
 	// Mendefinisikan nama file ekspor "hasil-export.xls"
 	header("Content-Disposition: attachment; filename=mitigasi.xls");
 	
-	$query=mysql_query("select * from risiko");
+	$query=mysqli_query($conn,"select * from risiko");
 	$i=1;
 	echo"<table border='1'>
 			<tr>
@@ -16,7 +16,7 @@ if($_GET['page']=='mitigasi'){
 				<th><center>Dampak</center></th>
 				<th><center>Solusi</center></th>
 			</tr>";
-	while($data=mysql_fetch_array($query)){
+	while($data=mysqli_fetch_array($query)){
 	echo "<tr>";
 		echo "<td>".$i."</td>";
 		echo "<td>".$data['risiko']."</td>";
@@ -44,9 +44,9 @@ if($_GET['page']=='monitoring'){
 			<th>Rekomendasi</th>
 		</tr>";
 					
-	$sql=mysql_query("select * from kegiatan");
+	$sql=mysqli_query($conn,"select * from kegiatan");
 	$i=1;
-	while($data=mysql_fetch_array($sql)){
+	while($data=mysqli_fetch_array($sql)){
 		$awal = strtotime($data['jadwal_awal']);
 		$akhir = strtotime($data['jadwal_selesai']);
 		$datediff = $akhir - $awal;
@@ -56,8 +56,8 @@ if($_GET['page']=='monitoring'){
 		echo "<td>".$data['nama']."</td>";
 		echo "<td>".bulan(tanggal($data['jadwal_awal']))." s.d. ".bulan(tanggal($data['jadwal_selesai']))." (".(round($datediff / (60 * 60 * 24))+1)." hari)</td>";
 		echo "<td>".$data['hari_kerja']." hari <ul>";
-		$kal_keg=mysql_query("select * from kalender_kegiatan where id_kegiatan='".$data['id']."' order by tanggal asc");
-		while($data_kal=mysql_fetch_array($kal_keg)){
+		$kal_keg=mysqli_query($conn,"select * from kalender_kegiatan where id_kegiatan='".$data['id']."' order by tanggal asc");
+		while($data_kal=mysqli_fetch_array($kal_keg)){
 			echo "<li>".bulan(tanggal($data_kal['tanggal']))."</li>";
 		}
 		echo "</ul></td>";
@@ -84,9 +84,9 @@ if($_GET['page']=='perencanaan'){
 			<th>Rencana Pengerjaan</th>
 		</tr>";
 					
-	$sql=mysql_query("select * from kegiatan");
+	$sql=mysqli_query($conn,"select * from kegiatan");
 	$i=1;
-	while($data=mysql_fetch_array($sql)){
+	while($data=mysqli_fetch_array($sql)){
 		$awal = strtotime($data['jadwal_awal']);
 		$akhir = strtotime($data['jadwal_selesai']);
 		$datediff = $akhir - $awal;
@@ -97,8 +97,8 @@ if($_GET['page']=='perencanaan'){
 		echo "<td>".$data['nama']."</td>";
 		echo "<td>".tanggal($data['jadwal_awal'])." s.d. ".tanggal($data['jadwal_selesai'])." (".(round($datediff / (60 * 60 * 24))+1)." hari)</td>";
 		echo "<td>".$data['hari_kerja']." hari <ul>";
-		$kal_keg=mysql_query("select * from kalender_kegiatan where id_kegiatan='".$data['id']."'");
-		while($data_kal=mysql_fetch_array($kal_keg)){
+		$kal_keg=mysqli_query($conn,"select * from kalender_kegiatan where id_kegiatan='".$data['id']."'");
+		while($data_kal=mysqli_fetch_array($kal_keg)){
 			echo "<li>".tanggal($data_kal['tanggal'])."</li>";
 		}
 		echo "</ul></td>";
@@ -121,11 +121,9 @@ if($_GET['page']=='pengaturan'){
 			<th><center>Jam Kerja</center></th>
 			<th><center>Jumlah PC/Laptop Tersedia</center></th>
 		</tr>";
-					
-	$sql=mysql_query("select * from kegiatan");
 	$i=1;
-	$query=mysql_query("select * from pengaturan2");
-	while($data=mysql_fetch_array($query)){
+	$query=mysqli_query($conn,"select * from pengaturan2");
+	while($data=mysqli_fetch_array($query)){
 		echo "<tr>";
 		$tgl=explode("-",$data['tanggal']);
 		$tanggal=$tgl[2]."-".$tgl[1]."-".$tgl[0];

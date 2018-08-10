@@ -1,7 +1,7 @@
 <?php
 include ("koneksinya.php");
-$sql=mysql_query("select * from kegiatan where id='".$_GET['id']."'");
-$data=mysql_fetch_array($sql);
+$sql=mysqli_query($conn,"select * from kegiatan where id='".$_GET['id']."'");
+$data=mysqli_fetch_array($sql);
 header("Content-type: application/vnd.ms-word");
 header("Content-Disposition: attachment;Filename=Dokumen Kesepakatan ".$data['nama'].".doc");
         

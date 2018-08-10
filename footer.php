@@ -1,6 +1,6 @@
                 
                 <footer>
-                    <p><center>@2018 BPS Kabupaten Tapanuli Utara</center></p>
+                    <p><center>&copy; 2018 BPS Kabupaten Tapanuli Utara</center></p>
                 </footer>
 
                 <a id="btn-scrollup" class="btn btn-circle btn-large" href="#"><i class="icon-chevron-up"></i></a>
