@@ -1,7 +1,6 @@
 <?php
 //koneksi mwsql
-$conn = mysqli_connect('localhost','pim','pim1200');
-//$conn = @mysql_connect('localhost','spi_monada','5pi5aja2017');
+$conn = mysqli_connect('localhost','root','');
 if (!$conn) {
 	die('Could not connect: ' . mysqli_connect_error());
 }

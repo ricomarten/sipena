@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
--- https://www.phpmyadmin.net/
+-- version 4.5.4.1deb2ubuntu2
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 04, 2018 at 09:55 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 5.6.34
+-- Host: localhost
+-- Generation Time: Aug 10, 2018 at 09:24 PM
+-- Server version: 5.7.23-0ubuntu0.16.04.1
+-- PHP Version: 7.1.20-1+ubuntu16.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -35,6 +33,25 @@ CREATE TABLE `kalender` (
   `sisa` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `kalender`
+--
+
+INSERT INTO `kalender` (`tanggal`, `jam_kerja`, `terpakai`, `sisa`) VALUES
+('2018-07-06', 8, 0, 8),
+('2018-07-07', 5, 5, 0),
+('2018-07-08', 8, 5, 3),
+('2018-07-09', 10, 5, 5),
+('2018-07-10', 6, 6, 0),
+('2018-07-11', 8, 0, 8),
+('2018-07-12', 8, 0, 8),
+('2018-07-13', 8, 0, 8),
+('2018-07-14', 8, 0, 8),
+('2018-07-15', 8, 4, 4),
+('2018-07-16', 10, 7, 3),
+('2018-07-17', 7, 7, 0),
+('2018-07-18', 8, 0, 8);
+
 -- --------------------------------------------------------
 
 --
@@ -53,9 +70,17 @@ CREATE TABLE `kalender_kegiatan` (
 --
 
 INSERT INTO `kalender_kegiatan` (`id`, `id_kegiatan`, `tanggal`, `jam_kerja`) VALUES
-(1, 1, '2018-07-02', 2),
-(2, 1, '2018-07-03', 2),
-(3, 1, '2018-07-04', 2);
+(73, 10, '2018-07-16', 2),
+(74, 10, '2018-07-17', 2),
+(92, 9, '2018-07-16', 1),
+(93, 9, '2018-07-17', 1),
+(95, 18, '2018-07-10', 6),
+(105, 6, '2018-07-08', 5),
+(106, 6, '2018-07-09', 5),
+(107, 6, '2018-07-07', 5),
+(108, 8, '2018-07-15', 4),
+(109, 8, '2018-07-16', 4),
+(110, 8, '2018-07-17', 4);
 
 -- --------------------------------------------------------
 
@@ -74,15 +99,20 @@ CREATE TABLE `kegiatan` (
   `hari_kerja` int(11) NOT NULL,
   `pc` int(11) NOT NULL,
   `prediksi` text,
-  `rekomendasi` text
+  `rekomendasi` text,
+  `dokumen` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `kegiatan`
 --
 
-INSERT INTO `kegiatan` (`id`, `nama`, `jadwal_awal`, `jadwal_selesai`, `target_dokumen`, `waktu_olah`, `jam_kerja`, `hari_kerja`, `pc`, `prediksi`, `rekomendasi`) VALUES
-(1, 'Pengolahan PODES 2018', '2018-07-01', '2018-07-10', 300, 15, 2, 0, 2, 'Terlambat 9 hari', 'Menambah 4 PC Pengolahan atau <br>Penambahan jam kerja menjadi 2 jam perhari');
+INSERT INTO `kegiatan` (`id`, `nama`, `jadwal_awal`, `jadwal_selesai`, `target_dokumen`, `waktu_olah`, `jam_kerja`, `hari_kerja`, `pc`, `prediksi`, `rekomendasi`, `dokumen`) VALUES
+(6, 'Pengolahan PMTB 2018', '2018-07-07', '2018-07-10', 55, 15, 5, 3, 1, 'Selesai tepat waktu', ' <br><i>Dokumen yang akan diolah harus sudah diserahkan paling lambat tanggal 6 Juli 2018</i>', 'Pengolahan PMTB 2018.doc'),
+(8, 'Pengolahan Sakernas 2018', '2018-07-15', '2018-07-17', 400, 60, 4, 3, 5, 'Terlambat 17 hari', 'Penambahan PC menjadi 33 PC atau <br>Penambahan jam kerja menjadi 27 jam perhari <br><i>Dokumen yang akan diolah harus sudah diserahkan paling lambat tanggal 14 Juli 2018</i>', NULL),
+(9, 'Pengolahan Wisnus 2018', '2018-07-16', '2018-07-17', 20, 20, 1, 2, 3, 'Selesai tepat waktu', ' <br><i>Dokumen yang akan diolah harus sudah diserahkan paling lambat tanggal 15 Juli 2018</i>', NULL),
+(10, 'Pengolahan Susenas 2018', '2018-07-16', '2018-07-17', 100, 15, 2, 2, 6, 'Selesai tepat waktu', ' <br><i>Dokumen yang akan diolah harus sudah diserahkan paling lambat tanggal 15 Juli 2018</i>', NULL),
+(18, 'Pengolah Ubinan 2018', '2018-07-07', '2018-07-10', 100, 15, 6, 1, 4, 'Selesai tepat waktu', ' <br><i>Dokumen yang akan diolah harus sudah diserahkan paling lambat tanggal 6 Juli 2018</i>', NULL);
 
 -- --------------------------------------------------------
 
@@ -100,7 +130,7 @@ CREATE TABLE `pengaturan` (
 --
 
 INSERT INTO `pengaturan` (`pc`, `jam_kerja`) VALUES
-(6, 8);
+(8, 8);
 
 -- --------------------------------------------------------
 
@@ -119,8 +149,16 @@ CREATE TABLE `pengaturan2` (
 --
 
 INSERT INTO `pengaturan2` (`tanggal`, `jam_kerja`, `pc`) VALUES
-('2018-07-07', 10, 6),
-('2018-07-18', 10, 6);
+('2018-07-06', 8, 6),
+('2018-07-07', 10, 8),
+('2018-07-08', 6, 8),
+('2018-07-09', 10, 8),
+('2018-07-10', 6, 8),
+('2018-07-15', 20, 8),
+('2018-07-16', 10, 8),
+('2018-07-17', 7, 8),
+('2018-07-18', 8, 8),
+('2018-07-19', 5, 8);
 
 -- --------------------------------------------------------
 
@@ -140,8 +178,8 @@ CREATE TABLE `risiko` (
 --
 
 INSERT INTO `risiko` (`id`, `risiko`, `mitigasi`, `status`) VALUES
-(1, 'Listrik sering padam', 'Menggunakan genset kantor', 'Tindakan mitigasi bagus'),
-(2, 'Tenaga pengolahan mengundurkan diri', 'Membuat daftar cadangan petugas yang sewaktu-waktu dapat dipanggil', 'Perlu ada tindakan mitigasi yang lebih baik');
+(1, 'Listrik sering padam', 'Pengolahan terganggu, perangkat IT rusak', 'Genset kantor harus stand-by'),
+(3, 'Petugas pengolahan mengundurkan diri', 'Proses pengolahan terganggu', 'Membuat daftar tenaga pengolahan cadangan');
 
 -- --------------------------------------------------------
 
@@ -184,7 +222,7 @@ INSERT INTO `user` (`username`, `password`, `status`) VALUES
 ('admin', '123456', '0'),
 ('intan', '123456', '3'),
 ('joshua', '123456', '1'),
-('rico', '123456', '2');
+('rico', '654321', '2');
 
 --
 -- Indexes for dumped tables
@@ -215,6 +253,12 @@ ALTER TABLE `pengaturan2`
   ADD PRIMARY KEY (`tanggal`);
 
 --
+-- Indexes for table `risiko`
+--
+ALTER TABLE `risiko`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `status_user`
 --
 ALTER TABLE `status_user`
@@ -234,15 +278,17 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `kalender_kegiatan`
 --
 ALTER TABLE `kalender_kegiatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 --
 -- AUTO_INCREMENT for table `kegiatan`
 --
 ALTER TABLE `kegiatan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-COMMIT;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+--
+-- AUTO_INCREMENT for table `risiko`
+--
+ALTER TABLE `risiko`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
