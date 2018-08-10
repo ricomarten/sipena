@@ -16,6 +16,7 @@
   $(document).ready(function() {
 
     $('#calendar').fullCalendar({
+		height: 550,
 		header: {
 			left: 'prev,next today',
 			center: 'title',
@@ -34,8 +35,8 @@
 		eventLimit: true, // allow "more" link when too many events
 		events: [
 		<?php	
-			$sql=mysql_query("SELECT kal.*,k.nama FROM `kalender_kegiatan` kal left join kegiatan k on k.id=kal.id_kegiatan ");
-			while($data=mysql_fetch_array($sql)){
+			$sql=mysqli_query($conn,"SELECT kal.*,k.nama FROM `kalender_kegiatan` kal left join kegiatan k on k.id=kal.id_kegiatan ");
+			while($data=mysqli_fetch_array($sql)){
 				echo " {";
 				echo "title: '".str_replace("Pengolahan","",$data['nama'])."',";
 				echo "start: '".$data['tanggal']."',";
@@ -70,29 +71,34 @@
 			</div>
 			<div class="box-content">			
 				<?php
-				$sql=mysql_query("select * from kegiatan LIMIT 3");
+				$sql=mysqli_query($conn,"select * from kegiatan LIMIT 4");
 				$i=0;
-				while($data=mysql_fetch_array($sql)){
-					$max=mysql_num_rows($sql);
+				$max=mysqli_num_rows($sql);
+				while($data=mysqli_fetch_array($sql)){		
 					if($i%2==0) echo '<div class="row-fluid">';
 					$awal = strtotime($data['jadwal_awal']);
 					$akhir = strtotime($data['jadwal_selesai']);
 					$datediff = $akhir - $awal;
 					echo '<div class="span6"><div class="well">';
 					echo '<center><canvas id="canvas-preview'.$i.'" style="width:100%;"></canvas><div id="preview-textfield'.$i.'"></div></center>';
-					echo "<h4>".$data['nama']."</h4>";
+					echo "".$data['nama']."";
 					echo "<p>Jadwal: ".tanggal($data['jadwal_awal'])." s.d. ".tanggal($data['jadwal_selesai'])." (".(round($datediff / (60 * 60 * 24))+1)." hari)<br>";
 					echo "Prediksi: ".$data['prediksi'].".</p>";
 					echo '</div></div>';		
 					$i++;
 					if($i%2==0 && $max!=2) echo '</div>';
+					if($i%2==0 && $max==2) echo '</div>';
+					if($i%2==0 && $max==3 && $i==2)  echo '</div>';
+					if($i%2==1 && $max==1 && $i==1)  echo '</div>';
 				}
 				?>	
-				<div class="span6">
-				<ul class="pager">
-					<li class="next"><?php echo "<a href='index.php?".paramEncrypt('page=dashboard')."'>Lihat Dashboard Selengkapnya &rarr;</a>";?></li>
-				</ul>
-				</div></div>
+				<div class="row-fluid">
+					<div class="span12 pull-right">
+					<ul class="pager">
+						<li class="next"><?php echo "<a href='index.php?".paramEncrypt('page=dashboard')."'>Lihat Dashboard Selengkapnya &rarr;</a>";?></li>
+					</ul>
+					</div>
+				</div>			
 			</div>
 		</div>
 	</div>
@@ -146,11 +152,12 @@ var opts = {
   
 };
 <?php
-	$sql=mysql_query("select * from kegiatan LIMIT 3");
+	$sql=mysqli_query($conn,"select * from kegiatan LIMIT 4");
 	$i=0;
-	while($data=mysql_fetch_array($sql)){
-		$datediff = strtotime($data['jadwal_selesai']) - strtotime($data['jadwal_awal']);
-		$A=(round($datediff / (60 * 60 * 24))+1);
+	while($data=mysqli_fetch_array($sql)){
+		//$datediff = strtotime($data['jadwal_selesai']) - strtotime($data['jadwal_awal']);
+		//$A=(round($datediff / (60 * 60 * 24))+1);
+		$A=$data['hari_kerja'];
 		$B=$data['target_dokumen'];
 		$C=$data['waktu_olah'];
 		$D=$B*$C;

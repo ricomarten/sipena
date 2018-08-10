@@ -1,8 +1,8 @@
 <?php
 include ("../koneksinya.php");
-$query=mysql_query("select * from risiko");
+$query=mysqli_query($conn,"select * from risiko");
 $i=1;
-while($data=mysql_fetch_array($query)){
+while($data=mysqli_fetch_array($query)){
 echo "<tr>";
 	echo "<td class='priority-1'>".$i."</td>";
 	echo "<td class='priority-2'>".$data['risiko']."</td>";

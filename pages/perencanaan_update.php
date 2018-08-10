@@ -3,8 +3,8 @@ include "../koneksinya.php";
 include "../plugins/AES/function.php";
 //print_r($_POST);
 $berhasil=false;
-$sql=mysql_query("select * from pengaturan");
-$data=mysql_fetch_array($sql);
+$sql=mysqli_query($conn,"select * from pengaturan");
+$data=mysqli_fetch_array($sql);
 for($i=0;$i<count($_POST['hari']);$i++){
 	$start_ts = strtotime(tanggal($_POST['jadwal_awal']));
 	$end_ts = strtotime(tanggal($_POST['jadwal_akhir']));
@@ -20,8 +20,8 @@ for($i=0;$i<count($_POST['hari']);$i++){
   }
 }
 for($i=0;$i<count($_POST['hari']);$i++){
-	$query_cari_kal=mysql_query("select * from pengaturan2 where tanggal='".tanggal($_POST['hari'][$i])."'");
-	$ketemu=mysql_num_rows($query_cari_kal);
+	$query_cari_kal=mysqli_query($conn,"select * from pengaturan2 where tanggal='".tanggal($_POST['hari'][$i])."'");
+	$ketemu=mysqli_num_rows($query_cari_kal);
   // Check that user date is between start & end
   if($ketemu>0){
 	  $cek_kal=false;
@@ -46,19 +46,19 @@ elseif(count($_POST['hari']) !== count(array_unique($_POST['hari']))) {
 }
 else{
 	$kode = $_POST['id'];
-	$cari=mysql_query("select * from kalender_kegiatan where id_kegiatan='".$kode."'");
-	while($data=mysql_fetch_array($cari)){
-		$cari_kal=mysql_query("select * from kalender where tanggal='".$data['tanggal']."'");
-		$data_kal=mysql_fetch_array($cari_kal);
-		if(mysql_num_rows($cari_kal)==1){
+	$cari=mysqli_query($conn,"select * from kalender_kegiatan where id_kegiatan='".$kode."'");
+	while($data=mysqli_fetch_array($cari)){
+		$cari_kal=mysqli_query($conn,"select * from kalender where tanggal='".$data['tanggal']."'");
+		$data_kal=mysqli_fetch_array($cari_kal);
+		if(mysqli_num_rows($cari_kal)==1){
 			$terpakai_edit=$data_kal['terpakai']-$data['jam_kerja'];
 			$sisa_edit=$data_kal['jam_kerja']-$terpakai_edit;
-			mysql_query("update kalender set terpakai=".$terpakai_edit.",sisa=".$sisa_edit." where tanggal='".$data['tanggal']."'");
+			mysqli_query($conn,"update kalender set terpakai=".$terpakai_edit.",sisa=".$sisa_edit." where tanggal='".$data['tanggal']."'");
 		}
 	}
    
     $query2 = "DELETE from kalender_kegiatan WHERE id_kegiatan = '$kode'";
-	$result2 = mysql_query($query2);
+	$result2 = mysqli_query($conn,$query2);
     
 	$berhasil=true;
 	$sql_query=[];
@@ -68,14 +68,14 @@ else{
 		if($_POST['hari'][$i]!=""){
 			$tgl=explode("-",$_POST['hari'][$i]);
 			$tanggal=$tgl[2]."-".$tgl[1]."-".$tgl[0];
-			$queri=mysql_query("select * from kalender where tanggal='".$tanggal."'");
-			$ada=mysql_num_rows($queri);
-			$datakalender=mysql_fetch_array($queri);
+			$queri=mysqli_query($conn,"select * from kalender where tanggal='".$tanggal."'");
+			$ada=mysqli_num_rows($queri);
+			$datakalender=mysqli_fetch_array($queri);
 			if($ada<=0){
 				$berhasil=true;			
-				$sql_pengaturan=mysql_query("select * from pengaturan2 where tanggal='".$tanggal."'");
-				if(mysql_num_rows($sql_pengaturan)>0){
-					$jam_pengaturan=mysql_fetch_array($sql_pengaturan);
+				$sql_pengaturan=mysqli_query($conn,"select * from pengaturan2 where tanggal='".$tanggal."'");
+				if(mysqli_num_rows($sql_pengaturan)>0){
+					$jam_pengaturan=mysqli_fetch_array($sql_pengaturan);
 					$sisa=$jam_pengaturan['jam_kerja']-$_POST['jam_kerja'];
 					$sql_query[$j]="INSERT INTO kalender(tanggal, jam_kerja, terpakai, sisa) VALUES ('".$tanggal."',".$jam_pengaturan['jam_kerja'].",".$_POST['jam_kerja'].",".$sisa.")";
 					$j++;
@@ -135,16 +135,16 @@ else{
 		//echo $prediksi;
 		if($H==0) $H=1;
 		$rek=round(($D/$F)/$A);
-		$rek2=round(($D/($H*$G))/60);
+		$rek2=round(($D/($A*$G))/60);
 		if($A<$H){
-			$rekomendasi="Menambah $rek PC Pengolahan atau <br>Penambahan jam kerja menjadi ".($rek2+$E)." jam perhari";
+			$rekomendasi="Penambahan PC menjadi $rek PC atau <br>Penambahan jam kerja menjadi ".($rek2)." jam perhari";
 		}else $rekomendasi="";
 		$date = tanggal($_POST['jadwal_awal']);
 		$newdate = strtotime ( '-1 day' , strtotime ( $date ) ) ;
 		$newdate = date ( 'j-m-Y' , $newdate );
 		$rekomendasi.=" <br><i>Dokumen yang akan diolah harus sudah diserahkan paling lambat tanggal ".bulan($newdate)."</i>";
 		
-		$result=mysql_query("update kegiatan set nama='".$_POST['nama']."',
+		$result=mysqli_query($conn,"update kegiatan set nama='".$_POST['nama']."',
 												jadwal_awal='".tanggal($_POST['jadwal_awal'])."',
 												jadwal_selesai='".tanggal($_POST['jadwal_akhir'])."',
 												target_dokumen='".$_POST['target']."',
@@ -157,14 +157,14 @@ else{
 		where id=".$kode."");
 		if($result){
 			for($k=0;$k<$j;$k++){
-				$hasil=mysql_query($sql_query[$k]);
+				$hasil=mysqli_query($conn,$sql_query[$k]);
 				//echo $hasil;	
 			}
-			$cari_id=mysql_query("select id from kegiatan where nama='".$_POST['nama']."'");
-			$hasil_id=mysql_fetch_array($cari_id);
+			$cari_id=mysqli_query($conn,"select id from kegiatan where nama='".$_POST['nama']."'");
+			$hasil_id=mysqli_fetch_array($cari_id);
 			for($i=0;$i<count($_POST['hari']);$i++){
 				if($_POST['hari'][$i]!=""){
-					$hasil_kal=mysql_query("INSERT INTO kalender_kegiatan(id_kegiatan, tanggal, jam_kerja) VALUES (".$hasil_id['id'].",'".tanggal($_POST['hari'][$i])."',".$_POST['jam_kerja'].")");
+					$hasil_kal=mysqli_query($conn,"INSERT INTO kalender_kegiatan(id_kegiatan, tanggal, jam_kerja) VALUES (".$hasil_id['id'].",'".tanggal($_POST['hari'][$i])."',".$_POST['jam_kerja'].")");
 				}
 			}
 			

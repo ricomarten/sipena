@@ -4,8 +4,8 @@
 		include ("../koneksinya.php");
 		$query = "INSERT INTO risiko (risiko,mitigasi,status) 
 			VALUES ('".$_POST['risiko']."','".$_POST['mitigasi']."','".$_POST['status_risiko']."')";
-		if (!$result = mysql_query($query)) {
-			exit(mysql_error());
+		if (!$result = mysqli_query($conn,$query)) {
+			exit(mysqli_error($conn));
 			 //echo "Username sudah pernah ada";
 		}
 		else{

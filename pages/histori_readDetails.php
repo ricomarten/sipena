@@ -9,12 +9,12 @@ if(isset($_POST['id']) && isset($_POST['id']) != "")
 
     // Get User Details
     $query = "select * from risiko WHERE id = '$kode'";
-    if (!$result = mysql_query($query)) {
-        exit(mysql_error());
+    if (!$result = mysqli_query($conn,$query)) {
+        exit(mysqli_error($conn));
     }
     $response = array();
-    if(mysql_num_rows($result) > 0) {
-        while ($row = mysql_fetch_assoc($result)) {
+    if(mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
             $response = $row;
         }
     }

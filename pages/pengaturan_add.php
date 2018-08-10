@@ -3,12 +3,12 @@
 		// include Database connection file 
 	
 			include ("../koneksinya.php");
-			$cari=mysql_num_rows(mysql_query("select * from pengaturan"));
+			$cari=mysqli_num_rows(mysqli_query($conn,"select * from pengaturan"));
 			if($cari==0){
 				$query = "INSERT INTO pengaturan (pc,jam_kerja) 
 					VALUES (".$_POST['pc'].",".$_POST['jam'].")";
-				if (!$result = mysql_query($query)) {
-					exit(mysql_error());
+				if (!$result = mysqli_query($conn,$query)) {
+					exit(mysqli_error($conn));
 					 //echo "Username sudah pernah ada";
 				}
 				else{
@@ -17,8 +17,8 @@
 			}else{
 				$query = "update pengaturan set 
 					pc =".$_POST['pc'].", jam_kerja=".$_POST['jam']."";
-				if (!$result = mysql_query($query)) {
-					exit(mysql_error());
+				if (!$result = mysqli_query($conn,$query)) {
+					exit(mysqli_error($conn));
 					 //echo "Username sudah pernah ada";
 				}
 				else{

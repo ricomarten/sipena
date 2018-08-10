@@ -10,12 +10,12 @@ if(isset($_POST['username']) && isset($_POST['username']) != "")
     // Get User Details
     $query = "select u.*,l.nama as nama_level from user u 
                     left join status_user l on l.kode_status=u.status  WHERE username = '$kode'";
-    if (!$result = mysql_query($query)) {
-        exit(mysql_error());
+    if (!$result = mysqli_query($conn,$query)) {
+        exit(mysqli_error($conn));
     }
     $response = array();
-    if(mysql_num_rows($result) > 0) {
-        while ($row = mysql_fetch_assoc($result)) {
+    if(mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($conn,$result)) {
             $response = $row;
         }
     }

@@ -207,9 +207,9 @@ function SimpanEntri(){
 			processData: false,
 			success: function (returndata) {
 			  var pesan=returndata.split("#");
-			  if(pesan[0]=="Berhasil menambahkan perencanaan"){
-				  alert(pesan[0]);
-				  location.href='index.php?'+pesan[1];
+			  if(pesan[0]=="error"){
+				  swal("",pesan[1],"warning");
+				  //location.href='index.php?'+pesan[1];
 			  }else{
 				  swal("",returndata,"success");
 			  }

@@ -10,8 +10,8 @@ if($_POST['tgl'] != "")
 
     // delete User
     $query = "DELETE from pengaturan2 WHERE tanggal = '$kode'";
-    if (!$result = mysql_query($query)) {
-        exit(mysql_error());
+    if (!$result = mysqli_query($conn,$query)) {
+        exit(mysqli_error($conn));
     }
 }
 ?>

@@ -9,8 +9,8 @@
 			$_POST['username']=str_replace("'","",$_POST['username']);
 			$query = "INSERT INTO user (username,password,status) 
 				VALUES ('".$_POST['username']."','".$_POST['password']."','".$_POST['level']."')";
-			if (!$result = mysql_query($query)) {
-				exit(mysql_error());
+			if (!$result = mysqli_query($conn,$query)) {
+				exit(mysqli_error($conn));
 				 //echo "Username sudah pernah ada";
 			}
 			else{

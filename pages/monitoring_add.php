@@ -16,15 +16,15 @@ if ($imgSize <= $maxSize && $imgSize != "") { // Test is extension allowed and i
 	$extensi	= $explode[count($explode)-1];
 	//$newThumbImageName = 'profile-'.$_POST['userId'].'.'.$ext; // We rename the image (in our example it will be profile-1.jpeg)
 	
-	$sql=mysql_query("select nama,dokumen from kegiatan where id='".$_POST['kegId']."'");
-	$data=mysql_fetch_array($sql);
+	$sql=mysqli_query($conn,"select nama,dokumen from kegiatan where id='".$_POST['kegId']."'");
+	$data=mysqli_fetch_array($sql);
 	$namadok=$data['nama'].".".$extensi;
 	if($data['dokumen']!=""){
 		unlink($destFolder.$data['dokumen']);
 	}
 	if(move_uploaded_file($imgTmpName,$destFolder.$namadok)) { // Upload image
 		
-		mysql_query('UPDATE kegiatan SET dokumen = "'.$namadok.'" WHERE id='.$_POST['kegId']); // Update database
+		mysqli_query($conn,'UPDATE kegiatan SET dokumen = "'.$namadok.'" WHERE id='.$_POST['kegId']); // Update database
  
 		$text = '<p class="myImage"><a href="upload/'.$namadok.'">'.$namadok.'</a></p>'; // Send back the image...
 		$text .= '<div class="alert alert-success" role="alert">Berhasil upload dokumen.</div>'; //...and a successfull text

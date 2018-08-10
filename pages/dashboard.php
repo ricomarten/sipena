@@ -31,10 +31,10 @@
 			</div>
 			<div class="box-content">			
 				<?php
-				$sql=mysql_query("select * from kegiatan");
+				$sql=mysqli_query($conn,"select * from kegiatan");
 				$i=0;
-				while($data=mysql_fetch_array($sql)){
-					$max=mysql_num_rows($sql);
+				while($data=mysqli_fetch_array($sql)){
+					$max=mysqli_num_rows($sql);
 					if($i%3==0) echo '<div class="row-fluid">';
 					$awal = strtotime($data['jadwal_awal']);
 					$akhir = strtotime($data['jadwal_selesai']);
@@ -87,11 +87,12 @@ var opts = {
   
 };
 <?php
-	$sql=mysql_query("select * from kegiatan");
+	$sql=mysqli_query($conn,"select * from kegiatan");
 	$i=0;
-	while($data=mysql_fetch_array($sql)){
-		$datediff = strtotime($data['jadwal_selesai']) - strtotime($data['jadwal_awal']);
-		$A=(round($datediff / (60 * 60 * 24))+1);
+	while($data=mysqli_fetch_array($sql)){
+		//$datediff = strtotime($data['jadwal_selesai']) - strtotime($data['jadwal_awal']);
+		//$A=(round($datediff / (60 * 60 * 24))+1);
+		$A=$data['hari_kerja'];
 		$B=$data['target_dokumen'];
 		$C=$data['waktu_olah'];
 		$D=$B*$C;

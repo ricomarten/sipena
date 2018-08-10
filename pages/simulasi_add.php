@@ -17,7 +17,7 @@ for($i=0;$i<count($_POST['hari']);$i++){
   }
 }
 if($cek_batas){
-	echo "Rencana pengerjaan tidak boleh diluar rentang jadwal pengolahan";
+	echo "error#Rencana pengerjaan tidak boleh diluar rentang jadwal pengolahan";
 }else{
 	$hari_pengolahan=0;
 	for($i=0;$i<count($_POST['hari']);$i++){
@@ -49,8 +49,8 @@ if($cek_batas){
 	}
 	echo "Dengan data yang ada dibutuhkan $H hari untuk menyelesaikan pengolahan data\n\n";	
 	$rek=round(($D/$F)/$A);
-	$rek2=round(($D/($H*$G))/60);
-	$rekomendasi="Menambah $rek PC Pengolahan atau \nPenambahan jam kerja menjadi ".($rek2+$E)." jam perhari";
+	$rek2=round(($D/($A*$G))/60);
+	$rekomendasi="Penambahan PC menjadi $rek PC atau \nPenambahan jam kerja menjadi ".($rek2)." jam perhari";
 	echo "Status : ".$prediksi."\n";
 	if($A<$H){
 		echo "Rekomendasi : ".$rekomendasi."\n";

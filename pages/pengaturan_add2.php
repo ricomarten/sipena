@@ -6,8 +6,8 @@
 		$tanggal=$tgl[2]."-".$tgl[1]."-".$tgl[0];
 		$query = "INSERT INTO pengaturan2 (tanggal,jam_kerja,pc) 
 			VALUES ('".$tanggal."',".$_POST['jam'].",".$_POST['pc'].")";
-		if (!$result = mysql_query($query)) {
-			exit(mysql_error());
+		if (!$result = mysqli_query($conn,$query)) {
+			exit(mysqli_error($conn));
 			 //echo "Username sudah pernah ada";
 		}
 		else{

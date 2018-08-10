@@ -16,8 +16,8 @@ if(isset($_POST))
 								mitigasi	= '".$mitigasi."',
 								status	= '".$status."'
 								WHERE id = ".$id."";
-    if (!$result = mysql_query($query)) {
-        exit(mysql_error());
+    if (!$result = mysqli_query($conn,$query)) {
+        exit(mysqli_error($conn));
     }
     else{
         echo "Berhasil update";

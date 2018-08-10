@@ -1,7 +1,7 @@
 <?php
 include ("../koneksinya.php");
-$query=mysql_query("select * from pengaturan2");
-while($data=mysql_fetch_array($query)){
+$query=mysqli_query($conn,"select * from pengaturan2");
+while($data=mysqli_fetch_array($query)){
 echo "<tr>";
 	$tgl=explode("-",$data['tanggal']);
 	$tanggal=$tgl[2]."-".$tgl[1]."-".$tgl[0];

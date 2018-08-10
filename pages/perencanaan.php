@@ -104,9 +104,9 @@
 					</thead>
 					<tbody>
 					<?php
-					$sql=mysql_query("select * from kegiatan");
+					$sql=mysqli_query($conn,"select * from kegiatan");
 					$i=1;
-					while($data=mysql_fetch_array($sql)){
+					while($data=mysqli_fetch_array($sql)){
 						$awal = strtotime($data['jadwal_awal']);
 						$akhir = strtotime($data['jadwal_selesai']);
 						$datediff = $akhir - $awal;
@@ -117,8 +117,8 @@
 						echo "<td class='priority-2'>".$data['nama']."</td>";
 						echo "<td class='priority-3'>".bulan(tanggal($data['jadwal_awal']))." s.d. ".bulan(tanggal($data['jadwal_selesai']))." (".(round($datediff / (60 * 60 * 24))+1)." hari)</td>";
 						echo "<td class='priority-4'>".$data['hari_kerja']." hari <ul>";
-						$kal_keg=mysql_query("select * from kalender_kegiatan where id_kegiatan='".$data['id']."' order by tanggal asc");
-						while($data_kal=mysql_fetch_array($kal_keg)){
+						$kal_keg=mysqli_query($conn,"select * from kalender_kegiatan where id_kegiatan='".$data['id']."' order by tanggal asc");
+						while($data_kal=mysqli_fetch_array($kal_keg)){
 							echo "<li>".tanggal($data_kal['tanggal'])."</li>";
 						}
 						echo "</ul></td>";
@@ -240,8 +240,8 @@
 			<div class="box-content">
 			<form id="entri" action="#" class="form-horizontal" onsubmit="return SimpanEntri()">
 			<?php
-				$sql=mysql_query("select * from kegiatan where id=".$var['id']."");
-				$data=mysql_fetch_array($sql);
+				$sql=mysqli_query($conn,"select * from kegiatan where id=".$var['id']."");
+				$data=mysqli_fetch_array($sql);
 				echo '<input type="hidden" class="span6" id="id" name="id" value="'.$data['id'].'"/>';
 			?>
 				<div class="control-group">
@@ -312,9 +312,15 @@
 						<button class="add_form_field">Tambah Hari <i class="icon-plus"></i></button>
 						<div class="container1">
 							<?php
-							$sql_kal=mysql_query("select * from kalender_kegiatan where id_kegiatan=".$var['id']."");
-							while($data_kal=mysql_fetch_array($sql_kal)){
-								echo '<div><div class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span><input class="date-picker" size="16" type="text" name="hari[]" value="'.tanggal($data_kal['tanggal']).'"></div><a href="#" class="delete"><i class="icon-remove-sign">Hapus</i></a></div><br>';
+							$n=0;
+							$sql_kal=mysqli_query($conn,"select * from kalender_kegiatan where id_kegiatan=".$var['id']." order by tanggal asc");
+							while($data_kal=mysqli_fetch_array($sql_kal)){
+								if($n==0){
+									echo '<div><div class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span><input class="date-picker" size="16" type="text" name="hari[]" value="'.tanggal($data_kal['tanggal']).'"></div></div><br>';
+								}else{
+									echo '<div><div class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span><input class="date-picker" size="16" type="text" name="hari[]" value="'.tanggal($data_kal['tanggal']).'"></div><a href="#" class="delete"><i class="icon-remove-sign">Hapus</i></a></div><br>';
+								}
+							$n++;
 							}
 							?>
 						</div>
@@ -340,8 +346,8 @@
 			<div class="box-content">
 			<form id="entri" action="#" class="form-horizontal" onsubmit="return SimpanEntri()">
 			<?php
-				$sql=mysql_query("select * from kegiatan where id=".$var['id']."");
-				$data=mysql_fetch_array($sql);
+				$sql=mysqli_query($conn,"select * from kegiatan where id=".$var['id']."");
+				$data=mysqli_fetch_array($sql);
 			?>
 				<div class="control-group">
 					<label class="control-label">Nama Kegiatan Pengolahan Data</label>
@@ -396,8 +402,8 @@
 					<div class="controls">
 						<div class="container1">
 							<?php
-							$sql_kal=mysql_query("select * from kalender_kegiatan where id_kegiatan=".$var['id']."");
-							while($data_kal=mysql_fetch_array($sql_kal)){
+							$sql_kal=mysqli_query($conn,"select * from kalender_kegiatan where id_kegiatan=".$var['id']."");
+							while($data_kal=mysqli_fetch_array($sql_kal)){
 								echo '<div class="input-prepend"><span class="add-on"><i class="icon-calendar"></i></span><input  size="16" type="text" name="hari[]" value="'.tanggal($data_kal['tanggal']).'"  readonly ></div><br>';
 							}
 							?>

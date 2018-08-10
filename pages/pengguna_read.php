@@ -1,8 +1,8 @@
 <?php
 include ("../koneksinya.php");
-$query=mysql_query("select u.*,l.nama as nama_level from user u 
+$query=mysqli_query($conn,"select u.*,l.nama as nama_level from user u 
                     left join status_user l on l.kode_status=u.status");
-while($data=mysql_fetch_array($query)){
+while($data=mysqli_fetch_array($query)){
 echo "<tr>";
 	echo "<td class='priority-1'>".$data['username']."</td>";
 	echo "<td class='priority-4'>".$data['password']."</td>";

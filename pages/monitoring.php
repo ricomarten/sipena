@@ -58,6 +58,19 @@
 		}
 	
 	}
+	.btn-bs-file{
+    position:relative;
+	}
+	.btn-bs-file input[type="file"]{
+		position: absolute;
+		top: -9999999;
+		filter: alpha(opacity=0);
+		opacity: 0;
+		width:0;
+		height:0;
+		outline: none;
+		cursor: inherit;
+	}
 	</style>
 <!--page specific css styles-->
         <link rel="stylesheet" type="text/css" href="assets/chosen-bootstrap/chosen.min.css" />
@@ -104,16 +117,16 @@
 							<th class="priority-1">Nama Kegiatan</th>
 							<th class="priority-5">Jadwal</th>
 							<th class="priority-6">Rencana Pengerjaan</th>
-							<th class="priority-4">Keterangan</th>
+							<th class="priority-4">Prediksi</th>
 							<th class="priority-7">Rekomendasi</th>
 							<th class="priority-2">Dokumen Kesepakatan</th>
 						</tr>
 					</thead>
 					<tbody>
 					<?php
-					$sql=mysql_query("select * from kegiatan");
+					$sql=mysqli_query($conn,"select * from kegiatan");
 					$i=1;
-					while($data=mysql_fetch_array($sql)){
+					while($data=mysqli_fetch_array($sql)){
 						$awal = strtotime($data['jadwal_awal']);
 						$akhir = strtotime($data['jadwal_selesai']);
 						$datediff = $akhir - $awal;
@@ -124,8 +137,8 @@
 						echo "<td class='priority-1'>".$data['nama']."</td>";
 						echo "<td class='priority-5'>".bulan(tanggal($data['jadwal_awal']))." s.d. ".bulan(tanggal($data['jadwal_selesai']))." (".(round($datediff / (60 * 60 * 24))+1)." hari)</td>";
 						echo "<td class='priority-6'>".$data['hari_kerja']." hari <ul>";
-						$kal_keg=mysql_query("select * from kalender_kegiatan where id_kegiatan='".$data['id']."' order by tanggal asc");
-						while($data_kal=mysql_fetch_array($kal_keg)){
+						$kal_keg=mysqli_query($conn,"select * from kalender_kegiatan where id_kegiatan='".$data['id']."' order by tanggal asc");
+						while($data_kal=mysqli_fetch_array($kal_keg)){
 							echo "<li>".bulan(tanggal($data_kal['tanggal']))."</li>";
 						}
 						echo "</ul></td>";
@@ -133,11 +146,15 @@
 						echo "<td class='priority-7'>".$data['rekomendasi']."</td>";	
 						echo "<td class='priority-2'>";
 						//echo "Template: <a href='upload/Kesepakatan_Perencanaan_Pengolahan.docx' target='_blank' class='btn'><i class='icon-download-alt'></i></a><br>";
-						echo "Download Kesepakatan: <a href='template.php?id=".$data['id']."' target='_blank' class='btn'><i class='icon-download-alt'></i></a><br>";
-						
+						echo "Download Kesepakatan: <a href='template.php?id=".$data['id']."' target='_blank' class='btn'><i class='icon-download-alt'></i></a><br>";					
 						echo "<form method='post' enctype='multipart/form-data' id='kesepakatanForm".$data['id']."' action=''>";
-						echo "<div><b>Upload dokumen: </b></div><div><input name='kesepakatan".$data['id']."' id='kesepakatan".$data['id']."' type='file' />";
-						echo "<input name='kegId' type='hidden' value='".$data['id']."' /></div></form>";
+						echo "<div><b>Upload dokumen: </b></div><div>";
+						//echo "<input name='kesepakatan".$data['id']."' id='kesepakatan".$data['id']."' type='file' />";
+						echo "<label class='btn-bs-file btn btn-sm btn-primary'>Browse<input name='kesepakatan".$data['id']."' id='kesepakatan".$data['id']."' type='file' /></label>";
+						
+						echo "<input name='kegId' type='hidden' value='".$data['id']."' />";
+
+						echo "</div></form>";
 						echo "<div id='hasilDokumen".$data['id']."'>";
 						if (isset($data['dokumen']) && $data['dokumen'] != "") { // Test if image exists
 							echo "<p class='myImage".$data['id']."'><a href='upload/".$data['dokumen']."'>".$data['dokumen']."</a></p>"; // If image exists we display the image
@@ -147,8 +164,6 @@
 							echo "Approve: <button class='btn btn-circle btn-danger'><i class='icon-remove'></i></button><br>";
 						}						
 						echo "</div>";
-						
-						//echo "<input id='default_file' type='file' name='kesepakatan'/>";
 						echo "</td>";
 						echo "</tr>";
 						$i++;
@@ -166,9 +181,9 @@
 <script src="js/jquery.form.js"></script> 
 <script>
 <?php
-$sql=mysql_query("select * from kegiatan");
+$sql=mysqli_query($conn,"select * from kegiatan");
 $i=1;
-while($data=mysql_fetch_array($sql)){
+while($data=mysqli_fetch_array($sql)){
 	echo "$('#kesepakatan".$data['id']."').bind('change', function() { ";
 	echo "\n$(\"#hasilDokumen".$data['id']."\").html('<img src=\"img/loader.gif\" alt=\"\" />');";
 	echo "\n$('#kesepakatanForm".$data['id']."').ajaxForm({ ";

@@ -14,8 +14,8 @@ if(isset($_POST))
     $query = "UPDATE user SET 	password= '".$password."',
 								status	= '".$level."'
 								WHERE username = '$username'";
-    if (!$result = mysql_query($query)) {
-        exit(mysql_error());
+    if (!$result = mysqli_query($conn,$query)) {
+        exit(mysqli_error($conn));
     }
     else{
         echo "Berhasil update";

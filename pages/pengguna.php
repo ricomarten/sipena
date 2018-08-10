@@ -124,9 +124,9 @@
 						<label class="span-2 control-label">Level User</label>
 						<div class="span-10">
 						<?php
-						$query=mysql_query("select * from status_user");
+						$query=mysqli_query($conn,"select * from status_user");
 						$i=1;
-						while($data=mysql_fetch_array($query)){
+						while($data=mysqli_fetch_array($query)){
 							echo "<div class='radio'>
 								<label><input type='radio' value ='".$data['kode_status']."' id='level".$i."' name='level'> ".$data['nama']."</label>
 							</div>";
@@ -173,9 +173,9 @@
 					<label class="span-2 control-label">Level User</label>
 					<div class="span-10">
 					<?php
-					$query=mysql_query("select * from status_user");
+					$query=mysqli_query($conn,"select * from status_user");
 					$i=1;
-					while($data=mysql_fetch_array($query)){
+					while($data=mysqli_fetch_array($query)){
 						echo "<div class='radio'>
 							<label><input type='radio' value ='".$data['kode_status']."' id='u_level".$i."' name='u_level'> ".$data['nama']."</label>
 						</div>";

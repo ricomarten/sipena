@@ -122,8 +122,8 @@
 					<label class="span-10 control-label">Jumlah PC/Laptop Tersedia</label>
 					<div class="span-2">
 					<?php
-					$query=mysql_query("select * from pengaturan");
-					$data=mysql_fetch_array($query);
+					$query=mysqli_query($conn,"select * from pengaturan");
+					$data=mysqli_fetch_array($query);
 					?>
 						<input type="text" class="form-control" id="pc2" name="pc2" value="<?php echo $data['pc'] ?>" readonly required>			  
 					</div>
@@ -234,7 +234,7 @@ function readRecords2() {
 function addRecord() {
 	// get values
     var pc = $("#pc").val();
-    var jam = $("#jam").val();
+    var jam = 8;
 	if(pc=='' || jam==''){
 		swal("","Semua isian harus terisi","warning");
 	}else{	
